@@ -14,9 +14,9 @@ Startup container:
 `docker run -it --rm -d --name crossflow -p 80:8080 -p 61616:61616 -p 61614:61614 -p 5672:5672 -p 61613:61613 -p 1883:1883 -p 8161:8161 -p 1099:1099 crossminer/crossflow:latest`
 
 Access Crossflow web application:
-http://localhost/org.eclipse.scava.crossflow.web/
+http://localhost/org.crossflow.web/
 
-More details on running Crossflow with Docker are available [here](https://github.com/crossminer/scava/tree/crossflow/crossflow/org.eclipse.scava.crossflow.web.docker/README.md).
+More details on running Crossflow with Docker are available [here](https://github.com/crossminer/scava/tree/crossflow/crossflow/org.crossflow.web.docker/README.md).
 
 ## Running from source
 To run Crossflow from source you will need Eclipse, Apache Tomcat and Apache Thrift. Brief instructions are provided below.
@@ -38,8 +38,8 @@ To run Crossflow from source you will need Eclipse, Apache Tomcat and Apache Thr
 	(choose keep my installation the same option)
 
 ### Update site
-- The update site for Crossflow can be found in the folder named 'org.eclipse.scava.crossflow.updatesite' in the 'crossflow' folder of the repository
-- For example, to access it online, for the 'crossflow' branch, the update site is at: https://github.com/crossminer/scava/raw/crossflow/crossflow/org.eclipse.scava.crossflow.updatesite (a.k.a pointing eclipse to that url in 'install new software') 
+- The update site for Crossflow can be found in the folder named 'org.crossflow.updatesite' in the 'crossflow' folder of the repository
+- For example, to access it online, for the 'crossflow' branch, the update site is at: https://github.com/crossminer/scava/raw/crossflow/crossflow/org.crossflow.updatesite (a.k.a pointing eclipse to that url in 'install new software') 
 - NB: the following (8) steps are not required if Crossflow is installed using this method, and running the Web UI needs to be done through docker
 
 ### Tomcat
@@ -68,17 +68,17 @@ We're using Apache Ivy for dependency management (i.e. so that we don't need to 
 ### Generating stuff
 You will need to run the ANT build-files below to generate stuff after you import all the crossflow and restmule projects (if you wish to use the web, tests or examples project(s)).
 
-- org.eclipse.scava.crossflow.tests/generate-all-tests.xml runs the Crossflow code generator against all models under /org.eclipse.scava.crossflow.tests/models
-- org.eclipse.scava.crossflow.web/build-war.xml runs the Thrift code generator against crossflow.thrift to produce Java and JavaScript source code and builds a Tomcat WAR file from org.eclipse.scava.crossflow.web
-- org.eclipse.scava.crossflow.examples/generate-all-examples.xml runs the Crossflow code generator against all models under /org.eclipse.scava.crossflow.examples/models
+- org.crossflow.tests/generate-all-tests.xml runs the Crossflow code generator against all models under /org.crossflow.tests/models
+- org.crossflow.web/build-war.xml runs the Thrift code generator against crossflow.thrift to produce Java and JavaScript source code and builds a Tomcat WAR file from org.crossflow.web
+- org.crossflow.examples/generate-all-examples.xml runs the Crossflow code generator against all models under /org.crossflow.examples/models
 
 ### Tests
-- JUnit tests can be ran through the CrossflowTests test suite in org.eclipse.scava.crossflow.tests
+- JUnit tests can be ran through the CrossflowTests test suite in org.crossflow.tests
 
 ### Web application
 - Before running the web application, start ActiveMQ from a terminal using 'activemq start'. If your path is not configured properly, move to the ActiveMQ directory on your machine and run the command in the 'bin' folder.
-- To run the web application (port: 8080) right-click on org.eclipse.scava.crossflow.web and select Run as -> Run on Server
-- The web app should be running on http://localhost:8080/org.eclipse.scava.crossflow.web/
+- To run the web application (port: 8080) right-click on org.crossflow.web and select Run as -> Run on Server
+- The web app should be running on http://localhost:8080/org.crossflow.web/
 
 ### Screenshots
 

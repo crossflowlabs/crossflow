@@ -1,0 +1,7 @@
+# Tracing options for the org.crossflow.language.diagram plug-in
+
+# Common issues
+org.crossflow.language.diagram/debug=false
+
+# Visual IDs
+org.crossflow.language.diagram/debug/visualID=false

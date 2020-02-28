@@ -1,0 +1,1 @@
+<% response.sendRedirect("/org.crossflow.web"); %>

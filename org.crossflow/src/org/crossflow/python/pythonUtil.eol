@@ -1,0 +1,76 @@
+import "../util.eol";
+
+@cached
+operation Workflow pyVarName() : String {
+	return self.name.pyVarName();
+}
+
+@cached
+operation Workflow pyType() : String {
+	return self.name;
+}
+
+@cached
+operation Workflow getPyTasks() : Collection {
+	return self.tasks.select(t|t.isPyTask());
+}
+
+@cached
+operation Task pyVarName() : String {
+	return self.name.pyVarName();
+}
+
+@cached
+operation Task pyType() : String {
+	return self.name;
+}
+
+@cached
+operation Task isPyTask() : Boolean {
+	return self.hasLanguage("python");
+}
+
+@cached
+operation Stream pyVarName() : String {
+	return self.name.pyVarName();
+}
+
+@cached
+operation Stream pyType() : String {
+	if (self.inputOf.isEmpty()) {
+		return "BuiltinStream";
+	} else {
+		return self.name;
+	}
+}
+
+@cached
+operation Type pyVarName() : String {
+	return self.name.pyVarName();
+}
+
+@cached
+operation Type pyType() : String {
+	return self.name;
+}
+
+@cached
+operation String pyVarName() : String {
+	return self.toSnakeCaseLower();
+}
+operation CrossflowLanguageModel!Workflow getSerializer() : CrossflowLanguageModel!Serializer {
+	var s = self.serializer;
+	if (s.isUndefined()) {
+		s = new CrossflowLanguageModel!Serializer;
+	}
+
+	if ("xml".equalsIgnoreCase(s.name)) {
+		throw "'xml' based serializer not supported in Python, use JSON instead";
+	} 
+	// Default to JSON in all other cases
+	else {
+		s.~implClass = "JsonSerializer";
+	}
+	
+	return s; 
+}

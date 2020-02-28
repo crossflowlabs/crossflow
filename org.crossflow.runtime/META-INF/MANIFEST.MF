@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Runtime
+Bundle-SymbolicName: org.crossflow.runtime
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: org.crossflow.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ClassPath: .
+Export-Package: org.crossflow.runtime,
+ org.crossflow.runtime.serialization,
+ org.crossflow.runtime.utils
+Require-Bundle: org.crossflow.runtime.dependencies;bundle-version="1.0.0";visibility:=reexport

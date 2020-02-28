@@ -1,0 +1,46 @@
+[%import "../util.eol";
+import "pythonUtil.eol";
+
+if (t.isSource()){%]
+import threading
+
+[%}%]
+from crossflow.[%=package%].[%=t.name.toSnakeCaseLower()%] import [%=t.name%]Base
+
+[% for (i in t.input.collect(s|s.type)) {%]
+from crossflow.[%=package%].[%=i.name.toSnakeCaseLower()%] import [%=i.name%]
+[%}%]
+[% for (i in t.output.collect(s|s.type)) { %]
+from crossflow.[%=package%].[%=i.name.toSnakeCaseLower()%] import [%=i.name%]
+[%}%]
+
+
+class [%=t.name%]([%=t.name%]Base):
+
+    def __init__(self):
+        super().__init__()
+        
+    [%for (s in t.inout) {%]
+    def consume_[%=s.name.toSnakeCaseLower()%](self, input_job: [%=s.type.name%]):
+        print(f"{self.workflow.name}:[%=t.name%]:consume_[%=self.name.toSnakeCaseLower()%] received {input_job}")
+    
+        # TODO: Add impementation here
+        # Send output jobs
+        
+        [%for (o in s.output) {%]
+        [%=o.type.name.toSnakeCase()%]_output = [%=o.type.name%]()
+            [%if (t.isSingleOut()) {%]
+        return [%=o.type.name.toSnakeCase()%]_output
+            [%} else {%]
+        # uncomment to send
+        # self.send_to_[%=o.name.toSnakeCaseLower()%]([%=o.type.name.toSnakeCase()%]_output)
+            [%}
+        }%]
+    
+    def on_consume_[%=s.name.toSnakeCaseLower()%]_timeout(self, input_job: [%=s.type.name%]):
+        super().on_consume_[%=s.name.toSnakeCaseLower()%]_timeout(input_job: [%=s.type.name%])
+        
+    def on_consume_[%=s.name.toSnakeCaseLower()%]_cancelled(self, input_job: [%=s.type.name%]):
+        super().on_consume_[%=s.name.toSnakeCaseLower()%]_cancelled(input_job)
+        
+    [%}%]

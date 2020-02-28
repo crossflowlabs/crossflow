@@ -1,0 +1,15 @@
+<project default="main">
+	<target name="main">
+		
+		<epsilon.emf.register file="../org.crossflow.language/model/crossflow.ecore"/>
+		
+		<epsilon.emf.loadModel name="CrossflowLanguageModel" modelfile="techrank.flexmi"
+			metamodeluri="org.crossflow" read="true" store="false"/>
+		
+		<epsilon.egl src="../org.crossflow/src/org.crossflow/java/crossflow.egx" outputroot=".">
+			<model ref="CrossflowLanguageModel"/>
+		</epsilon.egl>
+
+		<eclipse.refreshLocal resource="org.crossflow.examples.github.techrank" depth="-1"/>
+	</target>
+</project>
