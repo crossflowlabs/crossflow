@@ -241,11 +241,6 @@ public class WorkflowItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(CrossflowPackage.Literals.WORKFLOW__TASKS,
-				 CrossflowFactory.eINSTANCE.createReusableComponent()));
-
-		newChildDescriptors.add
-			(createChildParameter
 				(CrossflowPackage.Literals.WORKFLOW__TYPES,
 				 CrossflowFactory.eINSTANCE.createType()));
 

@@ -33,7 +33,7 @@ public class LanguageLanguageParametersCompartmentEditPart extends ListCompartme
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 7002;
+	public static final int VISUAL_ID = 7003;
 
 	/**
 	* @generated
@@ -96,7 +96,7 @@ public class LanguageLanguageParametersCompartmentEditPart extends ListCompartme
 			CreateElementRequestAdapter adapter = ((CreateViewAndElementRequest) request).getViewAndElementDescriptor()
 					.getCreateElementRequestAdapter();
 			IElementType type = (IElementType) adapter.getAdapter(IElementType.class);
-			if (type == CrossflowElementTypes.Parameter_3002) {
+			if (type == CrossflowElementTypes.Parameter_3005) {
 				return this;
 			}
 			return getParent().getTargetEditPart(request);

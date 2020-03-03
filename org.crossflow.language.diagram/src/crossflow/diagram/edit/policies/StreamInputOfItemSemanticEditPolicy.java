@@ -18,7 +18,7 @@ public class StreamInputOfItemSemanticEditPolicy extends CrossflowBaseItemSemant
 	* @generated
 	*/
 	public StreamInputOfItemSemanticEditPolicy() {
-		super(CrossflowElementTypes.StreamInputOf_4005);
+		super(CrossflowElementTypes.StreamInputOf_4002);
 	}
 
 	/**

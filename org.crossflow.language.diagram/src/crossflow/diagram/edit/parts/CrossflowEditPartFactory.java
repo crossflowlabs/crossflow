@@ -82,12 +82,6 @@ public class CrossflowEditPartFactory implements EditPartFactory {
 			case ScriptedTaskNameEditPart.VISUAL_ID:
 				return new ScriptedTaskNameEditPart(view);
 
-			case ReusableComponentEditPart.VISUAL_ID:
-				return new ReusableComponentEditPart(view);
-
-			case ReusableComponentNameEditPart.VISUAL_ID:
-				return new ReusableComponentNameEditPart(view);
-
 			case DataFieldEditPart.VISUAL_ID:
 				return new DataFieldEditPart(view);
 

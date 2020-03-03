@@ -2,10 +2,6 @@
 package [%=package%];
 
 import javax.annotation.Generated;
-[%
-for(i in imports){%]
-import [%=i%].*;
-[%}%]
 
 @Generated(value = "org.crossflow.java.[%=genRule%]"[% if (genDate.isDefined()) { %], date = "[%=genDate%]"[%}%])
 public interface [%=s.name%]Consumer {

@@ -24,7 +24,7 @@ public class CrossflowModelingAssistantProviderOfLanguageEditPart extends Crossf
 
 	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
 		List<IElementType> types = new ArrayList<IElementType>(1);
-		types.add(CrossflowElementTypes.Parameter_3002);
+		types.add(CrossflowElementTypes.Parameter_3005);
 		return types;
 	}
 

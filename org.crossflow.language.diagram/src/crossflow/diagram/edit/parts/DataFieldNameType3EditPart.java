@@ -60,7 +60,7 @@ public class DataFieldNameType3EditPart extends CompartmentEditPart implements I
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 5028;
+	public static final int VISUAL_ID = 5015;
 
 	/**
 	* @generated
@@ -291,7 +291,7 @@ public class DataFieldNameType3EditPart extends CompartmentEditPart implements I
 	*/
 	public IParser getParser() {
 		if (parser == null) {
-			parser = CrossflowParserProvider.getParser(CrossflowElementTypes.DataField_3008, getParserElement(),
+			parser = CrossflowParserProvider.getParser(CrossflowElementTypes.DataField_3003, getParserElement(),
 					CrossflowVisualIDRegistry
 							.getType(crossflow.diagram.edit.parts.DataFieldNameType3EditPart.VISUAL_ID));
 		}

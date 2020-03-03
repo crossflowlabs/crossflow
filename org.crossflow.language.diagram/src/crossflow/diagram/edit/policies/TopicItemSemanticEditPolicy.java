@@ -104,7 +104,7 @@ public class TopicItemSemanticEditPolicy extends CrossflowBaseItemSemanticEditPo
 		if (CrossflowElementTypes.StreamType_4001 == req.getElementType()) {
 			return getGEFWrapper(new StreamTypeCreateCommand(req, req.getSource(), req.getTarget()));
 		}
-		if (CrossflowElementTypes.StreamInputOf_4005 == req.getElementType()) {
+		if (CrossflowElementTypes.StreamInputOf_4002 == req.getElementType()) {
 			return getGEFWrapper(new StreamInputOfCreateCommand(req, req.getSource(), req.getTarget()));
 		}
 		if (CrossflowElementTypes.TaskOutput_4003 == req.getElementType()) {
@@ -120,7 +120,7 @@ public class TopicItemSemanticEditPolicy extends CrossflowBaseItemSemanticEditPo
 		if (CrossflowElementTypes.StreamType_4001 == req.getElementType()) {
 			return null;
 		}
-		if (CrossflowElementTypes.StreamInputOf_4005 == req.getElementType()) {
+		if (CrossflowElementTypes.StreamInputOf_4002 == req.getElementType()) {
 			return null;
 		}
 		if (CrossflowElementTypes.TaskOutput_4003 == req.getElementType()) {

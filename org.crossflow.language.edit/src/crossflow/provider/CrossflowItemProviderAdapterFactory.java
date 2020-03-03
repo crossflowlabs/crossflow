@@ -325,29 +325,6 @@ public class CrossflowItemProviderAdapterFactory extends CrossflowAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link crossflow.ReusableComponent} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ReusableComponentItemProvider reusableComponentItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link crossflow.ReusableComponent}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createReusableComponentAdapter() {
-		if (reusableComponentItemProvider == null) {
-			reusableComponentItemProvider = new ReusableComponentItemProvider(this);
-		}
-
-		return reusableComponentItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link crossflow.Type} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -601,7 +578,6 @@ public class CrossflowItemProviderAdapterFactory extends CrossflowAdapterFactory
 		if (commitmentTaskItemProvider != null) commitmentTaskItemProvider.dispose();
 		if (opinionatedTaskItemProvider != null) opinionatedTaskItemProvider.dispose();
 		if (scriptedTaskItemProvider != null) scriptedTaskItemProvider.dispose();
-		if (reusableComponentItemProvider != null) reusableComponentItemProvider.dispose();
 		if (typeItemProvider != null) typeItemProvider.dispose();
 		if (dataFieldItemProvider != null) dataFieldItemProvider.dispose();
 		if (enumFieldItemProvider != null) enumFieldItemProvider.dispose();

@@ -20,17 +20,17 @@ public class ScriptedTaskScriptedTaskOutputVariablesCompartmentItemSemanticEditP
 	* @generated
 	*/
 	public ScriptedTaskScriptedTaskOutputVariablesCompartmentItemSemanticEditPolicy() {
-		super(CrossflowElementTypes.ScriptedTask_2015);
+		super(CrossflowElementTypes.ScriptedTask_2009);
 	}
 
 	/**
 	* @generated
 	*/
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (CrossflowElementTypes.DataField_3006 == req.getElementType()) {
+		if (CrossflowElementTypes.DataField_3001 == req.getElementType()) {
 			return getGEFWrapper(new DataField2CreateCommand(req));
 		}
-		if (CrossflowElementTypes.EnumField_3007 == req.getElementType()) {
+		if (CrossflowElementTypes.EnumField_3002 == req.getElementType()) {
 			return getGEFWrapper(new EnumField2CreateCommand(req));
 		}
 		return super.getCreateCommand(req);

@@ -60,7 +60,7 @@ public class EnumFieldName2EditPart extends CompartmentEditPart implements IText
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 5025;
+	public static final int VISUAL_ID = 5010;
 
 	/**
 	* @generated
@@ -291,7 +291,7 @@ public class EnumFieldName2EditPart extends CompartmentEditPart implements IText
 	*/
 	public IParser getParser() {
 		if (parser == null) {
-			parser = CrossflowParserProvider.getParser(CrossflowElementTypes.EnumField_3007, getParserElement(),
+			parser = CrossflowParserProvider.getParser(CrossflowElementTypes.EnumField_3002, getParserElement(),
 					CrossflowVisualIDRegistry.getType(crossflow.diagram.edit.parts.EnumFieldName2EditPart.VISUAL_ID));
 		}
 		return parser;

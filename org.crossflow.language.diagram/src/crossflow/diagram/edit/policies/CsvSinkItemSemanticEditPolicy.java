@@ -91,7 +91,7 @@ public class CsvSinkItemSemanticEditPolicy extends CrossflowBaseItemSemanticEdit
 	 * @generated
 	 */
 	protected Command getStartCreateRelationshipCommand(CreateRelationshipRequest req) {
-		if (CrossflowElementTypes.StreamInputOf_4005 == req.getElementType()) {
+		if (CrossflowElementTypes.StreamInputOf_4002 == req.getElementType()) {
 			return null;
 		}
 		if (CrossflowElementTypes.TaskOutput_4003 == req.getElementType()) {
@@ -104,7 +104,7 @@ public class CsvSinkItemSemanticEditPolicy extends CrossflowBaseItemSemanticEdit
 	 * @generated
 	 */
 	protected Command getCompleteCreateRelationshipCommand(CreateRelationshipRequest req) {
-		if (CrossflowElementTypes.StreamInputOf_4005 == req.getElementType()) {
+		if (CrossflowElementTypes.StreamInputOf_4002 == req.getElementType()) {
 			return getGEFWrapper(new StreamInputOfCreateCommand(req, req.getSource(), req.getTarget()));
 		}
 		if (CrossflowElementTypes.TaskOutput_4003 == req.getElementType()) {

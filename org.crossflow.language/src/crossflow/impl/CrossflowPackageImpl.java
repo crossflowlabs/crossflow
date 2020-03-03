@@ -14,7 +14,6 @@ import crossflow.Language;
 import crossflow.OpinionatedTask;
 import crossflow.Parameter;
 import crossflow.Queue;
-import crossflow.ReusableComponent;
 import crossflow.ScriptedTask;
 import crossflow.Serializer;
 import crossflow.Sink;
@@ -24,10 +23,6 @@ import crossflow.Task;
 import crossflow.Topic;
 import crossflow.Type;
 import crossflow.Workflow;
-
-import crossflowComponents.CrossflowComponentsPackage;
-
-import crossflowComponents.impl.CrossflowComponentsPackageImpl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -132,13 +127,6 @@ public class CrossflowPackageImpl extends EPackageImpl implements CrossflowPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass reusableComponentEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass typeEClass = null;
 
 	/**
@@ -230,17 +218,11 @@ public class CrossflowPackageImpl extends EPackageImpl implements CrossflowPacka
 
 		isInited = true;
 
-		// Obtain or create and register interdependencies
-		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CrossflowComponentsPackage.eNS_URI);
-		CrossflowComponentsPackageImpl theCrossflowComponentsPackage = (CrossflowComponentsPackageImpl)(registeredPackage instanceof CrossflowComponentsPackageImpl ? registeredPackage : CrossflowComponentsPackage.eINSTANCE);
-
 		// Create package meta-data objects
 		theCrossflowPackage.createPackageContents();
-		theCrossflowComponentsPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theCrossflowPackage.initializePackageContents();
-		theCrossflowComponentsPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theCrossflowPackage.freeze();
@@ -666,26 +648,6 @@ public class CrossflowPackageImpl extends EPackageImpl implements CrossflowPacka
 	 * @generated
 	 */
 	@Override
-	public EClass getReusableComponent() {
-		return reusableComponentEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getReusableComponent_Component() {
-		return (EReference)reusableComponentEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getType() {
 		return typeEClass;
 	}
@@ -1002,9 +964,6 @@ public class CrossflowPackageImpl extends EPackageImpl implements CrossflowPacka
 		createEAttribute(scriptedTaskEClass, SCRIPTED_TASK__SCRIPT);
 		createEReference(scriptedTaskEClass, SCRIPTED_TASK__OUTPUT_VARIABLES);
 
-		reusableComponentEClass = createEClass(REUSABLE_COMPONENT);
-		createEReference(reusableComponentEClass, REUSABLE_COMPONENT__COMPONENT);
-
 		typeEClass = createEClass(TYPE);
 		createEAttribute(typeEClass, TYPE__NAME);
 		createEAttribute(typeEClass, TYPE__IMPL);
@@ -1060,9 +1019,6 @@ public class CrossflowPackageImpl extends EPackageImpl implements CrossflowPacka
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
-		// Obtain other dependent packages
-		CrossflowComponentsPackage theCrossflowComponentsPackage = (CrossflowComponentsPackage)EPackage.Registry.INSTANCE.getEPackage(CrossflowComponentsPackage.eNS_URI);
-
 		// Create type parameters
 
 		// Set bounds for type parameters
@@ -1077,7 +1033,6 @@ public class CrossflowPackageImpl extends EPackageImpl implements CrossflowPacka
 		commitmentTaskEClass.getESuperTypes().add(this.getTask());
 		opinionatedTaskEClass.getESuperTypes().add(this.getTask());
 		scriptedTaskEClass.getESuperTypes().add(this.getTask());
-		reusableComponentEClass.getESuperTypes().add(this.getTask());
 		dataFieldEClass.getESuperTypes().add(this.getField());
 		enumFieldEClass.getESuperTypes().add(this.getField());
 
@@ -1134,9 +1089,6 @@ public class CrossflowPackageImpl extends EPackageImpl implements CrossflowPacka
 		initEAttribute(getScriptedTask_ScriptingLanguage(), ecorePackage.getEString(), "scriptingLanguage", null, 0, 1, ScriptedTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getScriptedTask_Script(), ecorePackage.getEString(), "script", null, 0, 1, ScriptedTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getScriptedTask_OutputVariables(), this.getField(), null, "outputVariables", null, 0, -1, ScriptedTask.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(reusableComponentEClass, ReusableComponent.class, "ReusableComponent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getReusableComponent_Component(), theCrossflowComponentsPackage.getComponent(), null, "component", null, 1, 1, ReusableComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getType_Name(), ecorePackage.getEString(), "name", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1283,12 +1235,6 @@ public class CrossflowPackageImpl extends EPackageImpl implements CrossflowPacka
 		   new String[] {
 			   "label", "name",
 			   "color", "245,222,170"
-		   });
-		addAnnotation
-		  (reusableComponentEClass,
-		   source,
-		   new String[] {
-			   "label", "name"
 		   });
 		addAnnotation
 		  (typeEClass,

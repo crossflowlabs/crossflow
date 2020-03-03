@@ -63,7 +63,7 @@ public class SerializerSerializerParametersCompartmentCanonicalEditPolicy extend
 		View viewObject = (View) getHost().getModel();
 		LinkedList<EObject> result = new LinkedList<EObject>();
 		List<CrossflowNodeDescriptor> childDescriptors = CrossflowDiagramUpdater
-				.getSerializerSerializerParametersCompartment_7005SemanticChildren(viewObject);
+				.getSerializerSerializerParametersCompartment_7004SemanticChildren(viewObject);
 		for (CrossflowNodeDescriptor d : childDescriptors) {
 			result.add(d.getModelElement());
 		}
@@ -93,7 +93,7 @@ public class SerializerSerializerParametersCompartmentCanonicalEditPolicy extend
 		}
 		LinkedList<IAdaptable> createdViews = new LinkedList<IAdaptable>();
 		List<CrossflowNodeDescriptor> childDescriptors = CrossflowDiagramUpdater
-				.getSerializerSerializerParametersCompartment_7005SemanticChildren((View) getHost().getModel());
+				.getSerializerSerializerParametersCompartment_7004SemanticChildren((View) getHost().getModel());
 		LinkedList<View> orphaned = new LinkedList<View>();
 		// we care to check only views we recognize as ours
 		LinkedList<View> knownViewChildren = new LinkedList<View>();

@@ -18,14 +18,14 @@ public class LanguageLanguageParametersCompartmentItemSemanticEditPolicy extends
 	* @generated
 	*/
 	public LanguageLanguageParametersCompartmentItemSemanticEditPolicy() {
-		super(CrossflowElementTypes.Language_2013);
+		super(CrossflowElementTypes.Language_2014);
 	}
 
 	/**
 	* @generated
 	*/
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (CrossflowElementTypes.Parameter_3002 == req.getElementType()) {
+		if (CrossflowElementTypes.Parameter_3005 == req.getElementType()) {
 			return getGEFWrapper(new ParameterCreateCommand(req));
 		}
 		return super.getCreateCommand(req);

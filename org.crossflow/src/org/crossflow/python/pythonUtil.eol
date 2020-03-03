@@ -65,7 +65,8 @@ operation CrossflowLanguageModel!Workflow getSerializer() : CrossflowLanguageMod
 	}
 
 	if ("xml".equalsIgnoreCase(s.name)) {
-		throw "'xml' based serializer not supported in Python, use JSON instead";
+		"WARNING: 'xml' based serializer not supported in Python, using JSON instead: other languages used in this workflow may fail.".println;
+		s.~implClass = "JsonSerializer";
 	} 
 	// Default to JSON in all other cases
 	else {

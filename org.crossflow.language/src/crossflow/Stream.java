@@ -88,7 +88,7 @@ public interface Stream extends EObject {
 	 * @return the value of the '<em>Type</em>' reference.
 	 * @see #setType(Type)
 	 * @see crossflow.CrossflowPackage#getStream_Type()
-	 * @model
+	 * @model annotation="gmf.link"
 	 * @generated
 	 */
 	Type getType();

@@ -23,7 +23,7 @@ public class StreamInputOfEditPart extends ConnectionNodeEditPart implements ITr
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 4005;
+	public static final int VISUAL_ID = 4002;
 
 	/**
 	* @generated

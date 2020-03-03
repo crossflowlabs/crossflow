@@ -23,7 +23,7 @@ public class CrossflowModelingAssistantProviderOfWorkflowEditPart extends Crossf
 	@Override
 
 	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
-		List<IElementType> types = new ArrayList<IElementType>(16);
+		List<IElementType> types = new ArrayList<IElementType>(15);
 		types.add(CrossflowElementTypes.CsvSource_2001);
 		types.add(CrossflowElementTypes.CsvSink_2002);
 		types.add(CrossflowElementTypes.Topic_2003);
@@ -32,14 +32,13 @@ public class CrossflowModelingAssistantProviderOfWorkflowEditPart extends Crossf
 		types.add(CrossflowElementTypes.Sink_2006);
 		types.add(CrossflowElementTypes.CommitmentTask_2007);
 		types.add(CrossflowElementTypes.OpinionatedTask_2008);
-		types.add(CrossflowElementTypes.ScriptedTask_2015);
-		types.add(CrossflowElementTypes.ReusableComponent_2017);
-		types.add(CrossflowElementTypes.DataField_2019);
-		types.add(CrossflowElementTypes.EnumField_2020);
-		types.add(CrossflowElementTypes.Task_2010);
-		types.add(CrossflowElementTypes.Type_2011);
-		types.add(CrossflowElementTypes.Language_2013);
-		types.add(CrossflowElementTypes.Serializer_2018);
+		types.add(CrossflowElementTypes.ScriptedTask_2009);
+		types.add(CrossflowElementTypes.DataField_2010);
+		types.add(CrossflowElementTypes.EnumField_2011);
+		types.add(CrossflowElementTypes.Task_2012);
+		types.add(CrossflowElementTypes.Type_2013);
+		types.add(CrossflowElementTypes.Language_2014);
+		types.add(CrossflowElementTypes.Serializer_2015);
 		return types;
 	}
 

@@ -12,7 +12,6 @@ elementsToCenter.add('OpinionatedTaskFigure');
 elementsToCenter.add('CsvSourceFigure');
 elementsToCenter.add('CsvSinkFigure');
 elementsToCenter.add('ScriptedTaskFigure');
-elementsToCenter.add('ReusableComponentFigure');
 
 //elementsToCenter.add('TypeFigure');
 //elementsToCenter.add('FieldFigure');
@@ -114,12 +113,10 @@ var t = GmfTool!CreationTool.all.selectOne(r|r.title = 'Task');
 var ct = GmfTool!CreationTool.all.selectOne(r|r.title = 'CommitmentTask');
 var ot = GmfTool!CreationTool.all.selectOne(r|r.title = 'OpinionatedTask');
 var st = GmfTool!CreationTool.all.selectOne(r|r.title = 'ScriptedTask');
-var rc = GmfTool!CreationTool.all.selectOne(r|r.title = 'ReusableComponent');
 tasks.tools.add(t);
 tasks.tools.add(ct);
 tasks.tools.add(ot);
 tasks.tools.add(st);
-tasks.tools.add(rc);
 --
 }else{
 datatypes = GmfTool!ToolGroup.all.selectOne(r|r.title = 'Tasks');

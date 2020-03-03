@@ -67,7 +67,6 @@ public class CrossflowFactoryImpl extends EFactoryImpl implements CrossflowFacto
 			case CrossflowPackage.COMMITMENT_TASK: return createCommitmentTask();
 			case CrossflowPackage.OPINIONATED_TASK: return createOpinionatedTask();
 			case CrossflowPackage.SCRIPTED_TASK: return createScriptedTask();
-			case CrossflowPackage.REUSABLE_COMPONENT: return createReusableComponent();
 			case CrossflowPackage.TYPE: return createType();
 			case CrossflowPackage.DATA_FIELD: return createDataField();
 			case CrossflowPackage.ENUM_FIELD: return createEnumField();
@@ -198,17 +197,6 @@ public class CrossflowFactoryImpl extends EFactoryImpl implements CrossflowFacto
 	public ScriptedTask createScriptedTask() {
 		ScriptedTaskImpl scriptedTask = new ScriptedTaskImpl();
 		return scriptedTask;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ReusableComponent createReusableComponent() {
-		ReusableComponentImpl reusableComponent = new ReusableComponentImpl();
-		return reusableComponent;
 	}
 
 	/**

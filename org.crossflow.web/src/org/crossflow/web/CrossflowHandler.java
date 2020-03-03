@@ -81,6 +81,10 @@ public class CrossflowHandler implements Crossflow.Iface {
 					.newInstance(mode);
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException | ClassNotFoundException e) {
+			System.err.println(e.getClass());
+			System.err.println(experiment.getClassName());
+			System.err.println(mode);
+			System.err.println();
 			throw new TApplicationException(TApplicationException.INTERNAL_ERROR,
 					"Unable to create instance of workflow main class.");
 		} finally {

@@ -22,7 +22,7 @@ public class EnumField2ItemSemanticEditPolicy extends CrossflowBaseItemSemanticE
 	* @generated
 	*/
 	public EnumField2ItemSemanticEditPolicy() {
-		super(CrossflowElementTypes.EnumField_3007);
+		super(CrossflowElementTypes.EnumField_3002);
 	}
 
 	/**

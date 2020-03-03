@@ -33,7 +33,7 @@ public class SerializerSerializerParametersCompartmentEditPart extends ListCompa
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 7005;
+	public static final int VISUAL_ID = 7004;
 
 	/**
 	* @generated
@@ -96,7 +96,7 @@ public class SerializerSerializerParametersCompartmentEditPart extends ListCompa
 			CreateElementRequestAdapter adapter = ((CreateViewAndElementRequest) request).getViewAndElementDescriptor()
 					.getCreateElementRequestAdapter();
 			IElementType type = (IElementType) adapter.getAdapter(IElementType.class);
-			if (type == CrossflowElementTypes.Parameter_3005) {
+			if (type == CrossflowElementTypes.Parameter_3006) {
 				return this;
 			}
 			return getParent().getTargetEditPart(request);

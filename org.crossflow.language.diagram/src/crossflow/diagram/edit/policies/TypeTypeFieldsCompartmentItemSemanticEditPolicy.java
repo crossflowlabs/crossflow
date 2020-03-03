@@ -19,17 +19,17 @@ public class TypeTypeFieldsCompartmentItemSemanticEditPolicy extends CrossflowBa
 	* @generated
 	*/
 	public TypeTypeFieldsCompartmentItemSemanticEditPolicy() {
-		super(CrossflowElementTypes.Type_2011);
+		super(CrossflowElementTypes.Type_2013);
 	}
 
 	/**
 	* @generated
 	*/
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (CrossflowElementTypes.DataField_3008 == req.getElementType()) {
+		if (CrossflowElementTypes.DataField_3003 == req.getElementType()) {
 			return getGEFWrapper(new DataField3CreateCommand(req));
 		}
-		if (CrossflowElementTypes.EnumField_3009 == req.getElementType()) {
+		if (CrossflowElementTypes.EnumField_3004 == req.getElementType()) {
 			return getGEFWrapper(new EnumField3CreateCommand(req));
 		}
 		return super.getCreateCommand(req);

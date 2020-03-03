@@ -21,12 +21,15 @@
 			<enumfield name="workerLang" values="python,java"/>
 		</type>
 		
-	<language name="Java" package="org.crossflow.tests.calculator" genOutputFolder="src-gen" outputFolder="src"/>
-	<language name="Python" package="calculator">
-		<parameter name="skipReqsTxt" value="true"/>
-		<parameter name="skipReadme" value="true"/>
-		<parameter name="skipMain" value="true"/>
-	</language>
+		<language name="Java" package="org.crossflow.tests.calculator" genOutputFolder="src-gen" outputFolder="src"/>
+		<language name="Python" package="calculator">
+			<parameter name="skipReqsTxt" value="true"/>
+			<parameter name="skipReadme" value="true"/>
+			<parameter name="skipMain" value="true"/>
+		</language>
+
+		<serializer name="xml"/>
+
 	</workflow>	
-	
+
 </_>

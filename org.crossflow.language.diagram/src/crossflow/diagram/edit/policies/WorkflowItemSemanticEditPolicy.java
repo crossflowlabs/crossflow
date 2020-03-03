@@ -18,7 +18,6 @@ import crossflow.diagram.edit.commands.EnumFieldCreateCommand;
 import crossflow.diagram.edit.commands.LanguageCreateCommand;
 import crossflow.diagram.edit.commands.OpinionatedTaskCreateCommand;
 import crossflow.diagram.edit.commands.QueueCreateCommand;
-import crossflow.diagram.edit.commands.ReusableComponentCreateCommand;
 import crossflow.diagram.edit.commands.ScriptedTaskCreateCommand;
 import crossflow.diagram.edit.commands.SerializerCreateCommand;
 import crossflow.diagram.edit.commands.SinkCreateCommand;
@@ -68,28 +67,25 @@ public class WorkflowItemSemanticEditPolicy extends CrossflowBaseItemSemanticEdi
 		if (CrossflowElementTypes.OpinionatedTask_2008 == req.getElementType()) {
 			return getGEFWrapper(new OpinionatedTaskCreateCommand(req));
 		}
-		if (CrossflowElementTypes.ScriptedTask_2015 == req.getElementType()) {
+		if (CrossflowElementTypes.ScriptedTask_2009 == req.getElementType()) {
 			return getGEFWrapper(new ScriptedTaskCreateCommand(req));
 		}
-		if (CrossflowElementTypes.ReusableComponent_2017 == req.getElementType()) {
-			return getGEFWrapper(new ReusableComponentCreateCommand(req));
-		}
-		if (CrossflowElementTypes.DataField_2019 == req.getElementType()) {
+		if (CrossflowElementTypes.DataField_2010 == req.getElementType()) {
 			return getGEFWrapper(new DataFieldCreateCommand(req));
 		}
-		if (CrossflowElementTypes.EnumField_2020 == req.getElementType()) {
+		if (CrossflowElementTypes.EnumField_2011 == req.getElementType()) {
 			return getGEFWrapper(new EnumFieldCreateCommand(req));
 		}
-		if (CrossflowElementTypes.Task_2010 == req.getElementType()) {
+		if (CrossflowElementTypes.Task_2012 == req.getElementType()) {
 			return getGEFWrapper(new TaskCreateCommand(req));
 		}
-		if (CrossflowElementTypes.Type_2011 == req.getElementType()) {
+		if (CrossflowElementTypes.Type_2013 == req.getElementType()) {
 			return getGEFWrapper(new TypeCreateCommand(req));
 		}
-		if (CrossflowElementTypes.Language_2013 == req.getElementType()) {
+		if (CrossflowElementTypes.Language_2014 == req.getElementType()) {
 			return getGEFWrapper(new LanguageCreateCommand(req));
 		}
-		if (CrossflowElementTypes.Serializer_2018 == req.getElementType()) {
+		if (CrossflowElementTypes.Serializer_2015 == req.getElementType()) {
 			return getGEFWrapper(new SerializerCreateCommand(req));
 		}
 		return super.getCreateCommand(req);

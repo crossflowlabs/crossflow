@@ -29,7 +29,7 @@ public class SerializerItemSemanticEditPolicy extends CrossflowBaseItemSemanticE
 	* @generated
 	*/
 	public SerializerItemSemanticEditPolicy() {
-		super(CrossflowElementTypes.Serializer_2018);
+		super(CrossflowElementTypes.Serializer_2015);
 	}
 
 	/**

@@ -64,7 +64,7 @@ public class ScriptedTaskScriptedTaskOutputVariablesCompartmentCanonicalEditPoli
 		View viewObject = (View) getHost().getModel();
 		LinkedList<EObject> result = new LinkedList<EObject>();
 		List<CrossflowNodeDescriptor> childDescriptors = CrossflowDiagramUpdater
-				.getScriptedTaskScriptedTaskOutputVariablesCompartment_7003SemanticChildren(viewObject);
+				.getScriptedTaskScriptedTaskOutputVariablesCompartment_7001SemanticChildren(viewObject);
 		for (CrossflowNodeDescriptor d : childDescriptors) {
 			result.add(d.getModelElement());
 		}
@@ -95,7 +95,7 @@ public class ScriptedTaskScriptedTaskOutputVariablesCompartmentCanonicalEditPoli
 		}
 		LinkedList<IAdaptable> createdViews = new LinkedList<IAdaptable>();
 		List<CrossflowNodeDescriptor> childDescriptors = CrossflowDiagramUpdater
-				.getScriptedTaskScriptedTaskOutputVariablesCompartment_7003SemanticChildren(
+				.getScriptedTaskScriptedTaskOutputVariablesCompartment_7001SemanticChildren(
 						(View) getHost().getModel());
 		LinkedList<View> orphaned = new LinkedList<View>();
 		// we care to check only views we recognize as ours

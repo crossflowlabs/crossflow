@@ -19,6 +19,9 @@
 		</type>
 		
 		<language name="Java" package="org.crossflow.tests.wordcount" genOutputFolder="src-gen" outputFolder="src"/>
+
+		<serializer name="xml"/>
+
 	</workflow>	
-	
+		
 </_>

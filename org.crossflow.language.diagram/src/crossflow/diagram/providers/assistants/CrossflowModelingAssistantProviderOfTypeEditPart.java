@@ -27,8 +27,8 @@ public class CrossflowModelingAssistantProviderOfTypeEditPart extends CrossflowM
 
 	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
 		List<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(CrossflowElementTypes.DataField_3008);
-		types.add(CrossflowElementTypes.EnumField_3009);
+		types.add(CrossflowElementTypes.DataField_3003);
+		types.add(CrossflowElementTypes.EnumField_3004);
 		return types;
 	}
 
@@ -89,7 +89,7 @@ public class CrossflowModelingAssistantProviderOfTypeEditPart extends CrossflowM
 	public List<IElementType> doGetTypesForTarget(TypeEditPart source, IElementType relationshipType) {
 		List<IElementType> types = new ArrayList<IElementType>();
 		if (relationshipType == CrossflowElementTypes.TypeExtending_4004) {
-			types.add(CrossflowElementTypes.Type_2011);
+			types.add(CrossflowElementTypes.Type_2013);
 		}
 		return types;
 	}
@@ -133,7 +133,7 @@ public class CrossflowModelingAssistantProviderOfTypeEditPart extends CrossflowM
 			types.add(CrossflowElementTypes.Topic_2003);
 			types.add(CrossflowElementTypes.Queue_2004);
 		} else if (relationshipType == CrossflowElementTypes.TypeExtending_4004) {
-			types.add(CrossflowElementTypes.Type_2011);
+			types.add(CrossflowElementTypes.Type_2013);
 		}
 		return types;
 	}

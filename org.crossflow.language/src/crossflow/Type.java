@@ -89,7 +89,7 @@ public interface Type extends EObject {
 	 * @return the value of the '<em>Extending</em>' reference.
 	 * @see #setExtending(Type)
 	 * @see crossflow.CrossflowPackage#getType_Extending()
-	 * @model
+	 * @model annotation="gmf.link"
 	 * @generated
 	 */
 	Type getExtending();

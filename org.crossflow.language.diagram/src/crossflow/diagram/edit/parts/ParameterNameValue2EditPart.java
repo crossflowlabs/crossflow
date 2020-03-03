@@ -60,7 +60,7 @@ public class ParameterNameValue2EditPart extends CompartmentEditPart implements 
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 5022;
+	public static final int VISUAL_ID = 5020;
 
 	/**
 	* @generated
@@ -291,7 +291,7 @@ public class ParameterNameValue2EditPart extends CompartmentEditPart implements 
 	*/
 	public IParser getParser() {
 		if (parser == null) {
-			parser = CrossflowParserProvider.getParser(CrossflowElementTypes.Parameter_3005, getParserElement(),
+			parser = CrossflowParserProvider.getParser(CrossflowElementTypes.Parameter_3006, getParserElement(),
 					CrossflowVisualIDRegistry
 							.getType(crossflow.diagram.edit.parts.ParameterNameValue2EditPart.VISUAL_ID));
 		}

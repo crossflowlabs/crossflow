@@ -38,7 +38,7 @@ public class EnumFieldEditPart extends ShapeNodeEditPart {
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 2020;
+	public static final int VISUAL_ID = 2011;
 
 	/**
 	* @generated

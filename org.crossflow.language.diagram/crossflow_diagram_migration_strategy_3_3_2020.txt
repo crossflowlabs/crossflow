@@ -1,0 +1,64 @@
+DataField2EditPart : 3006 -> 3001
+
+DataFieldNameType2EditPart : 5024 -> 5009
+
+Parameter2EditPart : 3005 -> 3006
+
+ParameterEditPart : 3002 -> 3005
+
+EnumField2EditPart : 3007 -> 3002
+
+ParameterNameValueEditPart : 5014 -> 5018
+
+TaskNameEditPart : 5010 -> 5014
+
+EnumFieldName2EditPart : 5025 -> 5010
+
+DataField3EditPart : 3008 -> 3003
+
+LanguageNameEditPart : 5015 -> 5019
+
+DataFieldNameType3EditPart : 5028 -> 5015
+
+EnumField3EditPart : 3009 -> 3004
+
+EnumFieldName3EditPart : 5029 -> 5016
+
+ParameterNameValue2EditPart : 5022 -> 5020
+
+ScriptedTaskEditPart : 2015 -> 2009
+
+ScriptedTaskNameEditPart : 5017 -> 5011
+
+TypeNameEditPart : 5012 -> 5017
+
+DataFieldNameTypeEditPart : 5026 -> 5012
+
+LanguageEditPart : 2013 -> 2014
+
+TypeEditPart : 2011 -> 2013
+
+EnumFieldEditPart : 2020 -> 2011
+
+EnumFieldNameEditPart : 5027 -> 5013
+
+TaskEditPart : 2010 -> 2012
+
+SerializerEditPart : 2018 -> 2015
+
+SerializerNameEditPart : 5023 -> 5021
+
+StreamInputOfEditPart : 4005 -> 4002
+
+WrappingLabel2EditPart : 6005 -> 6002
+
+SerializerSerializerParametersCompartmentEditPart : 7005 -> 7004
+
+LanguageLanguageParametersCompartmentEditPart : 7002 -> 7003
+
+TypeTypeFieldsCompartmentEditPart : 7001 -> 7002
+
+
+
+
+//scriptedTaskScriptedTaskOutputVariablesCompartmentEditPart : //7003 -> //7001

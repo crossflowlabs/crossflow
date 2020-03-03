@@ -29,7 +29,7 @@ public class LanguageItemSemanticEditPolicy extends CrossflowBaseItemSemanticEdi
 	* @generated
 	*/
 	public LanguageItemSemanticEditPolicy() {
-		super(CrossflowElementTypes.Language_2013);
+		super(CrossflowElementTypes.Language_2014);
 	}
 
 	/**

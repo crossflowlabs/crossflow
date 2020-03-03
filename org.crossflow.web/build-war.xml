@@ -48,7 +48,7 @@
 	        <jar
 	           destfile="WebContent/experiments/calculator/org.crossflow.tests.calculator.jar"
 	           basedir="../org.crossflow.tests/bin"
-	           includes="**/org.crossflow/tests/calculator/**"/>
+	           includes="**/org/crossflow/tests/calculator/**"/>
 
 	        <!-- Wordcount example -->
 	        <delete>
@@ -59,7 +59,7 @@
 	        <jar
 	           destfile="WebContent/experiments/wordcount/org.crossflow.tests.wordcount.jar"
 	           basedir="../org.crossflow.tests/bin"
-	           includes="**/org.crossflow/tests/wordcount/**"/>
+	           includes="**/org/crossflow/tests/wordcount/**"/>
 	</target>
 	
 	<!-- Copy standalone dependencies to web libs -->
@@ -70,13 +70,6 @@
 		<copy todir="WebContent/WEB-INF/lib/bundles">
             <fileset dir="../org.crossflow.runtime.dependencies/lib/bundles" includes="*.jar" />
         </copy>
-
-		<copy todir="WebContent/WEB-INF/lib/jars">
-            <fileset dir="../../restmule/org.crossflow.restmule.dependencies/lib/jars" includes="*.jar" />
-        </copy>
-		<copy todir="WebContent/WEB-INF/lib/bundles">
-            <fileset dir="../../restmule/org.crossflow.restmule.dependencies/lib/bundles" includes="*.jar" />
-        </copy>	
 		
 	</target>
 	
@@ -108,15 +101,6 @@
         <jar destfile="WebContent/WEB-INF/lib/jars/org.crossflow.runtime.jar">
             <fileset dir="../org.crossflow.runtime/bin" />
         </jar>
-
-        <jar destfile="WebContent/WEB-INF/lib/jars/org.crossflow.restmule.core.jar">
-            <fileset dir="../../restmule/org.crossflow.restmule.core/bin" />
-        </jar>
-            	
-        <jar destfile="WebContent/WEB-INF/lib/jars/org.crossflow.restmule.client.github.jar">
-        	<fileset dir="../../restmule/org.crossflow.restmule.client.github/bin" />
-        	<fileset dir="../../restmule/org.crossflow.restmule.client.github/resources" />
-        </jar>            	
 		
         <eclipse.refreshLocal resource="org.crossflow.web" depth="-1" />
 

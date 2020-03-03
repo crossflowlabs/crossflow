@@ -75,7 +75,7 @@ public class StreamInputOfReorientCommand extends EditElementCommand {
 		if (!(oldEnd instanceof Task && newEnd instanceof Stream)) {
 			return false;
 		}
-		return CrossflowBaseItemSemanticEditPolicy.getLinkConstraints().canExistStreamInputOf_4005(getNewSource(),
+		return CrossflowBaseItemSemanticEditPolicy.getLinkConstraints().canExistStreamInputOf_4002(getNewSource(),
 				getOldTarget());
 	}
 
@@ -86,7 +86,7 @@ public class StreamInputOfReorientCommand extends EditElementCommand {
 		if (!(oldEnd instanceof Task && newEnd instanceof Task)) {
 			return false;
 		}
-		return CrossflowBaseItemSemanticEditPolicy.getLinkConstraints().canExistStreamInputOf_4005(getOldSource(),
+		return CrossflowBaseItemSemanticEditPolicy.getLinkConstraints().canExistStreamInputOf_4002(getOldSource(),
 				getNewTarget());
 	}
 

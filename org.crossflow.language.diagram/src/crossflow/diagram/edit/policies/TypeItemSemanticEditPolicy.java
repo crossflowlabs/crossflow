@@ -41,7 +41,7 @@ public class TypeItemSemanticEditPolicy extends CrossflowBaseItemSemanticEditPol
 	* @generated
 	*/
 	public TypeItemSemanticEditPolicy() {
-		super(CrossflowElementTypes.Type_2011);
+		super(CrossflowElementTypes.Type_2013);
 	}
 
 	/**

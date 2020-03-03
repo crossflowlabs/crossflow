@@ -32,7 +32,6 @@ import crossflow.diagram.edit.parts.OpinionatedTaskEditPart;
 import crossflow.diagram.edit.parts.Parameter2EditPart;
 import crossflow.diagram.edit.parts.ParameterEditPart;
 import crossflow.diagram.edit.parts.QueueEditPart;
-import crossflow.diagram.edit.parts.ReusableComponentEditPart;
 import crossflow.diagram.edit.parts.ScriptedTaskEditPart;
 import crossflow.diagram.edit.parts.SerializerEditPart;
 import crossflow.diagram.edit.parts.SinkEditPart;
@@ -77,38 +76,31 @@ public class CrossflowElementTypes {
 	/**
 	* @generated
 	*/
-	public static final IElementType Workflow_1000 = getElementType(
-			"org.crossflow.language.diagram.Workflow_1000"); //$NON-NLS-1$
+	public static final IElementType Workflow_1000 = getElementType("org.crossflow.language.diagram.Workflow_1000"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType CsvSource_2001 = getElementType(
-			"org.crossflow.language.diagram.CsvSource_2001"); //$NON-NLS-1$
+	public static final IElementType CsvSource_2001 = getElementType("org.crossflow.language.diagram.CsvSource_2001"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType CsvSink_2002 = getElementType(
-			"org.crossflow.language.diagram.CsvSink_2002"); //$NON-NLS-1$
+	public static final IElementType CsvSink_2002 = getElementType("org.crossflow.language.diagram.CsvSink_2002"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType Topic_2003 = getElementType(
-			"org.crossflow.language.diagram.Topic_2003"); //$NON-NLS-1$
+	public static final IElementType Topic_2003 = getElementType("org.crossflow.language.diagram.Topic_2003"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType Queue_2004 = getElementType(
-			"org.crossflow.language.diagram.Queue_2004"); //$NON-NLS-1$
+	public static final IElementType Queue_2004 = getElementType("org.crossflow.language.diagram.Queue_2004"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType Source_2005 = getElementType(
-			"org.crossflow.language.diagram.Source_2005"); //$NON-NLS-1$
+	public static final IElementType Source_2005 = getElementType("org.crossflow.language.diagram.Source_2005"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType Sink_2006 = getElementType(
-			"org.crossflow.language.diagram.Sink_2006"); //$NON-NLS-1$
+	public static final IElementType Sink_2006 = getElementType("org.crossflow.language.diagram.Sink_2006"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
@@ -122,88 +114,69 @@ public class CrossflowElementTypes {
 	/**
 	* @generated
 	*/
-	public static final IElementType ScriptedTask_2015 = getElementType(
-			"org.crossflow.language.diagram.ScriptedTask_2015"); //$NON-NLS-1$
+	public static final IElementType ScriptedTask_2009 = getElementType(
+			"org.crossflow.language.diagram.ScriptedTask_2009"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType ReusableComponent_2017 = getElementType(
-			"org.crossflow.language.diagram.ReusableComponent_2017"); //$NON-NLS-1$
+	public static final IElementType DataField_2010 = getElementType("org.crossflow.language.diagram.DataField_2010"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType DataField_2019 = getElementType(
-			"org.crossflow.language.diagram.DataField_2019"); //$NON-NLS-1$
+	public static final IElementType EnumField_2011 = getElementType("org.crossflow.language.diagram.EnumField_2011"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType EnumField_2020 = getElementType(
-			"org.crossflow.language.diagram.EnumField_2020"); //$NON-NLS-1$
+	public static final IElementType Task_2012 = getElementType("org.crossflow.language.diagram.Task_2012"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType Task_2010 = getElementType(
-			"org.crossflow.language.diagram.Task_2010"); //$NON-NLS-1$
+	public static final IElementType Type_2013 = getElementType("org.crossflow.language.diagram.Type_2013"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType Type_2011 = getElementType(
-			"org.crossflow.language.diagram.Type_2011"); //$NON-NLS-1$
+	public static final IElementType Language_2014 = getElementType("org.crossflow.language.diagram.Language_2014"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType Language_2013 = getElementType(
-			"org.crossflow.language.diagram.Language_2013"); //$NON-NLS-1$
+	public static final IElementType Serializer_2015 = getElementType("org.crossflow.language.diagram.Serializer_2015"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType Serializer_2018 = getElementType(
-			"org.crossflow.language.diagram.Serializer_2018"); //$NON-NLS-1$
+	public static final IElementType DataField_3001 = getElementType("org.crossflow.language.diagram.DataField_3001"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType DataField_3006 = getElementType(
-			"org.crossflow.language.diagram.DataField_3006"); //$NON-NLS-1$
+	public static final IElementType EnumField_3002 = getElementType("org.crossflow.language.diagram.EnumField_3002"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType EnumField_3007 = getElementType(
-			"org.crossflow.language.diagram.EnumField_3007"); //$NON-NLS-1$
+	public static final IElementType DataField_3003 = getElementType("org.crossflow.language.diagram.DataField_3003"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType DataField_3008 = getElementType(
-			"org.crossflow.language.diagram.DataField_3008"); //$NON-NLS-1$
+	public static final IElementType EnumField_3004 = getElementType("org.crossflow.language.diagram.EnumField_3004"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType EnumField_3009 = getElementType(
-			"org.crossflow.language.diagram.EnumField_3009"); //$NON-NLS-1$
+	public static final IElementType Parameter_3005 = getElementType("org.crossflow.language.diagram.Parameter_3005"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType Parameter_3002 = getElementType(
-			"org.crossflow.language.diagram.Parameter_3002"); //$NON-NLS-1$
+	public static final IElementType Parameter_3006 = getElementType("org.crossflow.language.diagram.Parameter_3006"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType Parameter_3005 = getElementType(
-			"org.crossflow.language.diagram.Parameter_3005"); //$NON-NLS-1$
+	public static final IElementType StreamType_4001 = getElementType("org.crossflow.language.diagram.StreamType_4001"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType StreamType_4001 = getElementType(
-			"org.crossflow.language.diagram.StreamType_4001"); //$NON-NLS-1$
+	public static final IElementType StreamInputOf_4002 = getElementType(
+			"org.crossflow.language.diagram.StreamInputOf_4002"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
-	public static final IElementType StreamInputOf_4005 = getElementType(
-			"org.crossflow.language.diagram.StreamInputOf_4005"); //$NON-NLS-1$
-	/**
-	* @generated
-	*/
-	public static final IElementType TaskOutput_4003 = getElementType(
-			"org.crossflow.language.diagram.TaskOutput_4003"); //$NON-NLS-1$
+	public static final IElementType TaskOutput_4003 = getElementType("org.crossflow.language.diagram.TaskOutput_4003"); //$NON-NLS-1$
 	/**
 	* @generated
 	*/
@@ -266,37 +239,35 @@ public class CrossflowElementTypes {
 
 			elements.put(OpinionatedTask_2008, CrossflowPackage.eINSTANCE.getOpinionatedTask());
 
-			elements.put(ScriptedTask_2015, CrossflowPackage.eINSTANCE.getScriptedTask());
+			elements.put(ScriptedTask_2009, CrossflowPackage.eINSTANCE.getScriptedTask());
 
-			elements.put(ReusableComponent_2017, CrossflowPackage.eINSTANCE.getReusableComponent());
+			elements.put(DataField_2010, CrossflowPackage.eINSTANCE.getDataField());
 
-			elements.put(DataField_2019, CrossflowPackage.eINSTANCE.getDataField());
+			elements.put(EnumField_2011, CrossflowPackage.eINSTANCE.getEnumField());
 
-			elements.put(EnumField_2020, CrossflowPackage.eINSTANCE.getEnumField());
+			elements.put(Task_2012, CrossflowPackage.eINSTANCE.getTask());
 
-			elements.put(Task_2010, CrossflowPackage.eINSTANCE.getTask());
+			elements.put(Type_2013, CrossflowPackage.eINSTANCE.getType());
 
-			elements.put(Type_2011, CrossflowPackage.eINSTANCE.getType());
+			elements.put(Language_2014, CrossflowPackage.eINSTANCE.getLanguage());
 
-			elements.put(Language_2013, CrossflowPackage.eINSTANCE.getLanguage());
+			elements.put(Serializer_2015, CrossflowPackage.eINSTANCE.getSerializer());
 
-			elements.put(Serializer_2018, CrossflowPackage.eINSTANCE.getSerializer());
+			elements.put(DataField_3001, CrossflowPackage.eINSTANCE.getDataField());
 
-			elements.put(DataField_3006, CrossflowPackage.eINSTANCE.getDataField());
+			elements.put(EnumField_3002, CrossflowPackage.eINSTANCE.getEnumField());
 
-			elements.put(EnumField_3007, CrossflowPackage.eINSTANCE.getEnumField());
+			elements.put(DataField_3003, CrossflowPackage.eINSTANCE.getDataField());
 
-			elements.put(DataField_3008, CrossflowPackage.eINSTANCE.getDataField());
-
-			elements.put(EnumField_3009, CrossflowPackage.eINSTANCE.getEnumField());
-
-			elements.put(Parameter_3002, CrossflowPackage.eINSTANCE.getParameter());
+			elements.put(EnumField_3004, CrossflowPackage.eINSTANCE.getEnumField());
 
 			elements.put(Parameter_3005, CrossflowPackage.eINSTANCE.getParameter());
 
+			elements.put(Parameter_3006, CrossflowPackage.eINSTANCE.getParameter());
+
 			elements.put(StreamType_4001, CrossflowPackage.eINSTANCE.getStream_Type());
 
-			elements.put(StreamInputOf_4005, CrossflowPackage.eINSTANCE.getStream_InputOf());
+			elements.put(StreamInputOf_4002, CrossflowPackage.eINSTANCE.getStream_InputOf());
 
 			elements.put(TaskOutput_4003, CrossflowPackage.eINSTANCE.getTask_Output());
 
@@ -327,22 +298,21 @@ public class CrossflowElementTypes {
 			KNOWN_ELEMENT_TYPES.add(Sink_2006);
 			KNOWN_ELEMENT_TYPES.add(CommitmentTask_2007);
 			KNOWN_ELEMENT_TYPES.add(OpinionatedTask_2008);
-			KNOWN_ELEMENT_TYPES.add(ScriptedTask_2015);
-			KNOWN_ELEMENT_TYPES.add(ReusableComponent_2017);
-			KNOWN_ELEMENT_TYPES.add(DataField_2019);
-			KNOWN_ELEMENT_TYPES.add(EnumField_2020);
-			KNOWN_ELEMENT_TYPES.add(Task_2010);
-			KNOWN_ELEMENT_TYPES.add(Type_2011);
-			KNOWN_ELEMENT_TYPES.add(Language_2013);
-			KNOWN_ELEMENT_TYPES.add(Serializer_2018);
-			KNOWN_ELEMENT_TYPES.add(DataField_3006);
-			KNOWN_ELEMENT_TYPES.add(EnumField_3007);
-			KNOWN_ELEMENT_TYPES.add(DataField_3008);
-			KNOWN_ELEMENT_TYPES.add(EnumField_3009);
-			KNOWN_ELEMENT_TYPES.add(Parameter_3002);
+			KNOWN_ELEMENT_TYPES.add(ScriptedTask_2009);
+			KNOWN_ELEMENT_TYPES.add(DataField_2010);
+			KNOWN_ELEMENT_TYPES.add(EnumField_2011);
+			KNOWN_ELEMENT_TYPES.add(Task_2012);
+			KNOWN_ELEMENT_TYPES.add(Type_2013);
+			KNOWN_ELEMENT_TYPES.add(Language_2014);
+			KNOWN_ELEMENT_TYPES.add(Serializer_2015);
+			KNOWN_ELEMENT_TYPES.add(DataField_3001);
+			KNOWN_ELEMENT_TYPES.add(EnumField_3002);
+			KNOWN_ELEMENT_TYPES.add(DataField_3003);
+			KNOWN_ELEMENT_TYPES.add(EnumField_3004);
 			KNOWN_ELEMENT_TYPES.add(Parameter_3005);
+			KNOWN_ELEMENT_TYPES.add(Parameter_3006);
 			KNOWN_ELEMENT_TYPES.add(StreamType_4001);
-			KNOWN_ELEMENT_TYPES.add(StreamInputOf_4005);
+			KNOWN_ELEMENT_TYPES.add(StreamInputOf_4002);
 			KNOWN_ELEMENT_TYPES.add(TaskOutput_4003);
 			KNOWN_ELEMENT_TYPES.add(TypeExtending_4004);
 		}
@@ -373,37 +343,35 @@ public class CrossflowElementTypes {
 		case OpinionatedTaskEditPart.VISUAL_ID:
 			return OpinionatedTask_2008;
 		case ScriptedTaskEditPart.VISUAL_ID:
-			return ScriptedTask_2015;
-		case ReusableComponentEditPart.VISUAL_ID:
-			return ReusableComponent_2017;
+			return ScriptedTask_2009;
 		case DataFieldEditPart.VISUAL_ID:
-			return DataField_2019;
+			return DataField_2010;
 		case EnumFieldEditPart.VISUAL_ID:
-			return EnumField_2020;
+			return EnumField_2011;
 		case TaskEditPart.VISUAL_ID:
-			return Task_2010;
+			return Task_2012;
 		case TypeEditPart.VISUAL_ID:
-			return Type_2011;
+			return Type_2013;
 		case LanguageEditPart.VISUAL_ID:
-			return Language_2013;
+			return Language_2014;
 		case SerializerEditPart.VISUAL_ID:
-			return Serializer_2018;
+			return Serializer_2015;
 		case DataField2EditPart.VISUAL_ID:
-			return DataField_3006;
+			return DataField_3001;
 		case EnumField2EditPart.VISUAL_ID:
-			return EnumField_3007;
+			return EnumField_3002;
 		case DataField3EditPart.VISUAL_ID:
-			return DataField_3008;
+			return DataField_3003;
 		case EnumField3EditPart.VISUAL_ID:
-			return EnumField_3009;
+			return EnumField_3004;
 		case ParameterEditPart.VISUAL_ID:
-			return Parameter_3002;
-		case Parameter2EditPart.VISUAL_ID:
 			return Parameter_3005;
+		case Parameter2EditPart.VISUAL_ID:
+			return Parameter_3006;
 		case StreamTypeEditPart.VISUAL_ID:
 			return StreamType_4001;
 		case StreamInputOfEditPart.VISUAL_ID:
-			return StreamInputOf_4005;
+			return StreamInputOf_4002;
 		case TaskOutputEditPart.VISUAL_ID:
 			return TaskOutput_4003;
 		case TypeExtendingEditPart.VISUAL_ID:

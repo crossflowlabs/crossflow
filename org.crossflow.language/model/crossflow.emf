@@ -2,8 +2,6 @@
 @namespace(uri="org.crossflow", prefix="cf")
 package crossflow;
 
-import "platform:/resource/org.crossflow.language/model/components.ecore";
-
 @gmf.diagram(onefile="true")
 class Workflow {
   attr String name;
@@ -91,11 +89,6 @@ class ScriptedTask extends Task {
 	
  	@gmf.compartment(layout="list",collapsible="false")
   	val Field[*] outputVariables;
-}
-
-@gmf.node(label="name")
-class ReusableComponent extends Task {
-	ref crossflowComponents.Component[1] component;
 }
 
 @gmf.node(label="name", figure ="rectangle", label.icon="false", color="181,255,255")

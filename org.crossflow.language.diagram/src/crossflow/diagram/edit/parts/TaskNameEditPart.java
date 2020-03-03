@@ -60,7 +60,7 @@ public class TaskNameEditPart extends CompartmentEditPart implements ITextAwareE
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 5010;
+	public static final int VISUAL_ID = 5014;
 
 	/**
 	* @generated
@@ -291,7 +291,7 @@ public class TaskNameEditPart extends CompartmentEditPart implements ITextAwareE
 	*/
 	public IParser getParser() {
 		if (parser == null) {
-			parser = CrossflowParserProvider.getParser(CrossflowElementTypes.Task_2010, getParserElement(),
+			parser = CrossflowParserProvider.getParser(CrossflowElementTypes.Task_2012, getParserElement(),
 					CrossflowVisualIDRegistry.getType(crossflow.diagram.edit.parts.TaskNameEditPart.VISUAL_ID));
 		}
 		return parser;

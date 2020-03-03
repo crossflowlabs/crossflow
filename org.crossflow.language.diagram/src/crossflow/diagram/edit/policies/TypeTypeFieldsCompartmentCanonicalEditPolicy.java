@@ -64,7 +64,7 @@ public class TypeTypeFieldsCompartmentCanonicalEditPolicy extends CanonicalEditP
 		View viewObject = (View) getHost().getModel();
 		LinkedList<EObject> result = new LinkedList<EObject>();
 		List<CrossflowNodeDescriptor> childDescriptors = CrossflowDiagramUpdater
-				.getTypeTypeFieldsCompartment_7001SemanticChildren(viewObject);
+				.getTypeTypeFieldsCompartment_7002SemanticChildren(viewObject);
 		for (CrossflowNodeDescriptor d : childDescriptors) {
 			result.add(d.getModelElement());
 		}
@@ -95,7 +95,7 @@ public class TypeTypeFieldsCompartmentCanonicalEditPolicy extends CanonicalEditP
 		}
 		LinkedList<IAdaptable> createdViews = new LinkedList<IAdaptable>();
 		List<CrossflowNodeDescriptor> childDescriptors = CrossflowDiagramUpdater
-				.getTypeTypeFieldsCompartment_7001SemanticChildren((View) getHost().getModel());
+				.getTypeTypeFieldsCompartment_7002SemanticChildren((View) getHost().getModel());
 		LinkedList<View> orphaned = new LinkedList<View>();
 		// we care to check only views we recognize as ours
 		LinkedList<View> knownViewChildren = new LinkedList<View>();

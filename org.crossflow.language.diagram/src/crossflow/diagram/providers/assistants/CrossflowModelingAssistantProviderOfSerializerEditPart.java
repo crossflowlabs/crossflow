@@ -24,7 +24,7 @@ public class CrossflowModelingAssistantProviderOfSerializerEditPart extends Cros
 
 	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
 		List<IElementType> types = new ArrayList<IElementType>(1);
-		types.add(CrossflowElementTypes.Parameter_3005);
+		types.add(CrossflowElementTypes.Parameter_3006);
 		return types;
 	}
 

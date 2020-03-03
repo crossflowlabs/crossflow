@@ -9,10 +9,6 @@ import org.crossflow.runtime.Job;
 import org.crossflow.runtime.JobStream;
 import org.crossflow.runtime.Task;
 import org.apache.activemq.command.ActiveMQBytesMessage;
-[%
-for(i in imports){%]
-import [%=i%].*;
-[%}%]
 
 @Generated(value = "org.crossflow.java.[%=genRule%]"[% if (genDate.isDefined()) { %], date = "[%=genDate%]"[%}%])
 public class [%=s.name%] extends JobStream<[%=s.type.name%]> {

@@ -60,7 +60,7 @@ public class LanguageNameEditPart extends CompartmentEditPart implements ITextAw
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 5015;
+	public static final int VISUAL_ID = 5019;
 
 	/**
 	* @generated
@@ -291,7 +291,7 @@ public class LanguageNameEditPart extends CompartmentEditPart implements ITextAw
 	*/
 	public IParser getParser() {
 		if (parser == null) {
-			parser = CrossflowParserProvider.getParser(CrossflowElementTypes.Language_2013, getParserElement(),
+			parser = CrossflowParserProvider.getParser(CrossflowElementTypes.Language_2014, getParserElement(),
 					CrossflowVisualIDRegistry.getType(crossflow.diagram.edit.parts.LanguageNameEditPart.VISUAL_ID));
 		}
 		return parser;

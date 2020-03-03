@@ -45,7 +45,7 @@ public class LanguageEditPart extends ShapeNodeEditPart {
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 2013;
+	public static final int VISUAL_ID = 2014;
 
 	/**
 	* @generated
@@ -279,7 +279,7 @@ public class LanguageEditPart extends ShapeNodeEditPart {
 			CreateElementRequestAdapter adapter = ((CreateViewAndElementRequest) request).getViewAndElementDescriptor()
 					.getCreateElementRequestAdapter();
 			IElementType type = (IElementType) adapter.getAdapter(IElementType.class);
-			if (type == CrossflowElementTypes.Parameter_3002) {
+			if (type == CrossflowElementTypes.Parameter_3005) {
 				return getChildBySemanticHint(
 						CrossflowVisualIDRegistry.getType(LanguageLanguageParametersCompartmentEditPart.VISUAL_ID));
 			}

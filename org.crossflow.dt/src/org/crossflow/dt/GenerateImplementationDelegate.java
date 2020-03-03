@@ -13,15 +13,13 @@
 package org.crossflow.dt;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import org.crossflow.GenerateImplementations;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
@@ -29,11 +27,9 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.crossflow.GenerateImplementations;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-import org.osgi.framework.Bundle;
 
 /**
  * The action delegate for the CrossflowBaseClassGenerationAction menu
@@ -43,8 +39,6 @@ import org.osgi.framework.Bundle;
  *
  */
 public class GenerateImplementationDelegate implements IObjectActionDelegate {
-
-	public static final String REUSABLECOMPONENTEXTENSIONPOINT = "org.crossflow.ReusableComponentsExtensionPoint";
 	
 	private Shell shell;
 	protected ISelection selection = null;
@@ -73,28 +67,6 @@ public class GenerateImplementationDelegate implements IObjectActionDelegate {
 			// generate implementations
 			GenerateImplementations impls = new GenerateImplementations(projectFolder,
 					selectedFile.getLocation().toOSString());
-			// add all reusable component models from the relevant extension point to the resource set
-			
-			List<IConfigurationElement> reusableComponentsCEs = getConfigurationElementsFor(
-					GenerateImplementationDelegate.REUSABLECOMPONENTEXTENSIONPOINT);
-
-			List<File> reusableComponentModels = new ArrayList<>();
-			
-			for (IConfigurationElement ice : reusableComponentsCEs) {
-				Bundle bundle = Platform.getBundle(ice.getDeclaringExtension().getContributor().getName());
-				URL model = bundle.getEntry(ice.getAttribute("definition"));
-				// System.out.println(model);
-				URL resolved = null;
-				try {
-					resolved = FileLocator.resolve(model);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			
-				reusableComponentModels.add(new File(resolved.getFile()));
-			}			
-			//
-			impls.setReusableComponentModels(reusableComponentModels);
 			
 			//
 			displayInformation(impls.run());

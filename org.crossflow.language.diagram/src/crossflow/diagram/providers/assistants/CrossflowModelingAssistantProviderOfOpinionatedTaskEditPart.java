@@ -104,7 +104,7 @@ public class CrossflowModelingAssistantProviderOfOpinionatedTaskEditPart extends
 	*/
 	public List<IElementType> doGetRelTypesOnTarget(OpinionatedTaskEditPart target) {
 		List<IElementType> types = new ArrayList<IElementType>(1);
-		types.add(CrossflowElementTypes.StreamInputOf_4005);
+		types.add(CrossflowElementTypes.StreamInputOf_4002);
 		return types;
 	}
 
@@ -123,7 +123,7 @@ public class CrossflowModelingAssistantProviderOfOpinionatedTaskEditPart extends
 	*/
 	public List<IElementType> doGetTypesForSource(OpinionatedTaskEditPart target, IElementType relationshipType) {
 		List<IElementType> types = new ArrayList<IElementType>();
-		if (relationshipType == CrossflowElementTypes.StreamInputOf_4005) {
+		if (relationshipType == CrossflowElementTypes.StreamInputOf_4002) {
 			types.add(CrossflowElementTypes.Topic_2003);
 			types.add(CrossflowElementTypes.Queue_2004);
 		}

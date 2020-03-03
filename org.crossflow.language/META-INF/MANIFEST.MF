@@ -14,8 +14,5 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: crossflow,
  crossflow.impl,
- crossflow.util,
- crossflowComponents,
- crossflowComponents.impl,
- crossflowComponents.util
+ crossflow.util
 

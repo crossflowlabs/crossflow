@@ -8,10 +8,6 @@ import java.util.Collection;
 import java.util.ArrayList;
 import org.crossflow.runtime.Job;
 [%
-for(i in imports){%]
-import [%=i%].*;
-[%}
-
 // Annotate fields with appropriate type mappings
 for (f in t.allFields()) f.annotateType();
 %]

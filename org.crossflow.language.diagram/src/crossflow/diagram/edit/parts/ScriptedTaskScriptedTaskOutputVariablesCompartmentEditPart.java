@@ -33,7 +33,7 @@ public class ScriptedTaskScriptedTaskOutputVariablesCompartmentEditPart extends 
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 7003;
+	public static final int VISUAL_ID = 7001;
 
 	/**
 	* @generated
@@ -96,10 +96,10 @@ public class ScriptedTaskScriptedTaskOutputVariablesCompartmentEditPart extends 
 			CreateElementRequestAdapter adapter = ((CreateViewAndElementRequest) request).getViewAndElementDescriptor()
 					.getCreateElementRequestAdapter();
 			IElementType type = (IElementType) adapter.getAdapter(IElementType.class);
-			if (type == CrossflowElementTypes.DataField_3006) {
+			if (type == CrossflowElementTypes.DataField_3001) {
 				return this;
 			}
-			if (type == CrossflowElementTypes.EnumField_3007) {
+			if (type == CrossflowElementTypes.EnumField_3002) {
 				return this;
 			}
 			return getParent().getTargetEditPart(request);

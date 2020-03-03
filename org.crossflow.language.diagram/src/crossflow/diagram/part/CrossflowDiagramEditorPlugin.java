@@ -121,7 +121,6 @@ public class CrossflowDiagramEditorPlugin extends AbstractUIPlugin {
 	*/
 	protected void fillItemProviderFactories(List<AdapterFactory> factories) {
 		factories.add(new CrossflowItemProviderAdapterFactory());
-		factories.add(new crossflowComponents.provider.CrossflowComponentsItemProviderAdapterFactory());
 		factories.add(new ResourceItemProviderAdapterFactory());
 		factories.add(new ReflectiveItemProviderAdapterFactory());
 	}

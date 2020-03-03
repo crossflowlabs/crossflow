@@ -48,7 +48,7 @@ public class ScriptedTaskEditPart extends ShapeNodeEditPart {
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 2015;
+	public static final int VISUAL_ID = 2009;
 
 	/**
 	* @generated
@@ -282,11 +282,11 @@ public class ScriptedTaskEditPart extends ShapeNodeEditPart {
 			CreateElementRequestAdapter adapter = ((CreateViewAndElementRequest) request).getViewAndElementDescriptor()
 					.getCreateElementRequestAdapter();
 			IElementType type = (IElementType) adapter.getAdapter(IElementType.class);
-			if (type == CrossflowElementTypes.DataField_3006) {
+			if (type == CrossflowElementTypes.DataField_3001) {
 				return getChildBySemanticHint(CrossflowVisualIDRegistry
 						.getType(ScriptedTaskScriptedTaskOutputVariablesCompartmentEditPart.VISUAL_ID));
 			}
-			if (type == CrossflowElementTypes.EnumField_3007) {
+			if (type == CrossflowElementTypes.EnumField_3002) {
 				return getChildBySemanticHint(CrossflowVisualIDRegistry
 						.getType(ScriptedTaskScriptedTaskOutputVariablesCompartmentEditPart.VISUAL_ID));
 			}

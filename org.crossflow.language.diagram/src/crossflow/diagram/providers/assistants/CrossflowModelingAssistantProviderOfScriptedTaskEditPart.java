@@ -29,8 +29,8 @@ public class CrossflowModelingAssistantProviderOfScriptedTaskEditPart extends Cr
 
 	public List<IElementType> getTypesForPopupBar(IAdaptable host) {
 		List<IElementType> types = new ArrayList<IElementType>(2);
-		types.add(CrossflowElementTypes.DataField_3006);
-		types.add(CrossflowElementTypes.EnumField_3007);
+		types.add(CrossflowElementTypes.DataField_3001);
+		types.add(CrossflowElementTypes.EnumField_3002);
 		return types;
 	}
 
@@ -116,7 +116,7 @@ public class CrossflowModelingAssistantProviderOfScriptedTaskEditPart extends Cr
 	*/
 	public List<IElementType> doGetRelTypesOnTarget(ScriptedTaskEditPart target) {
 		List<IElementType> types = new ArrayList<IElementType>(1);
-		types.add(CrossflowElementTypes.StreamInputOf_4005);
+		types.add(CrossflowElementTypes.StreamInputOf_4002);
 		return types;
 	}
 
@@ -135,7 +135,7 @@ public class CrossflowModelingAssistantProviderOfScriptedTaskEditPart extends Cr
 	*/
 	public List<IElementType> doGetTypesForSource(ScriptedTaskEditPart target, IElementType relationshipType) {
 		List<IElementType> types = new ArrayList<IElementType>();
-		if (relationshipType == CrossflowElementTypes.StreamInputOf_4005) {
+		if (relationshipType == CrossflowElementTypes.StreamInputOf_4002) {
 			types.add(CrossflowElementTypes.Topic_2003);
 			types.add(CrossflowElementTypes.Queue_2004);
 		}

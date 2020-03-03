@@ -103,7 +103,7 @@ public class CrossflowModelingAssistantProviderOfSourceEditPart extends Crossflo
 	*/
 	public List<IElementType> doGetRelTypesOnTarget(SourceEditPart target) {
 		List<IElementType> types = new ArrayList<IElementType>(1);
-		types.add(CrossflowElementTypes.StreamInputOf_4005);
+		types.add(CrossflowElementTypes.StreamInputOf_4002);
 		return types;
 	}
 
@@ -122,7 +122,7 @@ public class CrossflowModelingAssistantProviderOfSourceEditPart extends Crossflo
 	*/
 	public List<IElementType> doGetTypesForSource(SourceEditPart target, IElementType relationshipType) {
 		List<IElementType> types = new ArrayList<IElementType>();
-		if (relationshipType == CrossflowElementTypes.StreamInputOf_4005) {
+		if (relationshipType == CrossflowElementTypes.StreamInputOf_4002) {
 			types.add(CrossflowElementTypes.Topic_2003);
 			types.add(CrossflowElementTypes.Queue_2004);
 		}

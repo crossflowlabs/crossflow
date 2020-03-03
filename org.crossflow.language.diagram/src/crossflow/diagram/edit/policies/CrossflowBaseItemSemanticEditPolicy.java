@@ -323,9 +323,9 @@ public class CrossflowBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		}
 
 		/**
-		 * @generated
-		 */
-		public boolean canCreateStreamInputOf_4005(Stream source, Task target) {
+		* @generated
+		*/
+		public boolean canCreateStreamInputOf_4002(Stream source, Task target) {
 			if (source != null) {
 				if (source.getInputOf().contains(target)) {
 					return false;
@@ -335,12 +335,12 @@ public class CrossflowBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 				return false;
 			}
 
-			return canExistStreamInputOf_4005(source, target);
+			return canExistStreamInputOf_4002(source, target);
 		}
 
 		/**
-		 * @generated
-		 */
+			 * @generated
+			 */
 		public boolean canCreateTaskOutput_4003(Task source, Stream target) {
 			if (source != null) {
 				if (source.getOutput().contains(target)) {
@@ -377,13 +377,13 @@ public class CrossflowBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		/**
 		* @generated
 		*/
-		public boolean canExistStreamInputOf_4005(Stream source, Task target) {
+		public boolean canExistStreamInputOf_4002(Stream source, Task target) {
 			return true;
 		}
 
 		/**
-		* @generated
-		*/
+			* @generated
+			*/
 		public boolean canExistTaskOutput_4003(Task source, Stream target) {
 			return true;
 		}

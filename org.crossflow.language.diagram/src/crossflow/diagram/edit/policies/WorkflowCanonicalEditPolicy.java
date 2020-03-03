@@ -49,7 +49,6 @@ import crossflow.diagram.edit.parts.OpinionatedTaskEditPart;
 import crossflow.diagram.edit.parts.Parameter2EditPart;
 import crossflow.diagram.edit.parts.ParameterEditPart;
 import crossflow.diagram.edit.parts.QueueEditPart;
-import crossflow.diagram.edit.parts.ReusableComponentEditPart;
 import crossflow.diagram.edit.parts.ScriptedTaskEditPart;
 import crossflow.diagram.edit.parts.SerializerEditPart;
 import crossflow.diagram.edit.parts.SinkEditPart;
@@ -142,7 +141,6 @@ public class WorkflowCanonicalEditPolicy extends CanonicalEditPolicy {
 		case CommitmentTaskEditPart.VISUAL_ID:
 		case OpinionatedTaskEditPart.VISUAL_ID:
 		case ScriptedTaskEditPart.VISUAL_ID:
-		case ReusableComponentEditPart.VISUAL_ID:
 		case DataFieldEditPart.VISUAL_ID:
 		case EnumFieldEditPart.VISUAL_ID:
 		case TaskEditPart.VISUAL_ID:
@@ -366,98 +364,91 @@ public class WorkflowCanonicalEditPolicy extends CanonicalEditPolicy {
 		}
 		case ScriptedTaskEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(CrossflowDiagramUpdater.getScriptedTask_2015ContainedLinks(view));
-			}
-			domain2NotationMap.putView(view.getElement(), view);
-			break;
-		}
-		case ReusableComponentEditPart.VISUAL_ID: {
-			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(CrossflowDiagramUpdater.getReusableComponent_2017ContainedLinks(view));
+				result.addAll(CrossflowDiagramUpdater.getScriptedTask_2009ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case DataFieldEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(CrossflowDiagramUpdater.getDataField_2019ContainedLinks(view));
+				result.addAll(CrossflowDiagramUpdater.getDataField_2010ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case EnumFieldEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(CrossflowDiagramUpdater.getEnumField_2020ContainedLinks(view));
+				result.addAll(CrossflowDiagramUpdater.getEnumField_2011ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case TaskEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(CrossflowDiagramUpdater.getTask_2010ContainedLinks(view));
+				result.addAll(CrossflowDiagramUpdater.getTask_2012ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case TypeEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(CrossflowDiagramUpdater.getType_2011ContainedLinks(view));
+				result.addAll(CrossflowDiagramUpdater.getType_2013ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case LanguageEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(CrossflowDiagramUpdater.getLanguage_2013ContainedLinks(view));
+				result.addAll(CrossflowDiagramUpdater.getLanguage_2014ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case SerializerEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(CrossflowDiagramUpdater.getSerializer_2018ContainedLinks(view));
+				result.addAll(CrossflowDiagramUpdater.getSerializer_2015ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case DataField2EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(CrossflowDiagramUpdater.getDataField_3006ContainedLinks(view));
+				result.addAll(CrossflowDiagramUpdater.getDataField_3001ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case EnumField2EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(CrossflowDiagramUpdater.getEnumField_3007ContainedLinks(view));
+				result.addAll(CrossflowDiagramUpdater.getEnumField_3002ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case DataField3EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(CrossflowDiagramUpdater.getDataField_3008ContainedLinks(view));
+				result.addAll(CrossflowDiagramUpdater.getDataField_3003ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case EnumField3EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(CrossflowDiagramUpdater.getEnumField_3009ContainedLinks(view));
+				result.addAll(CrossflowDiagramUpdater.getEnumField_3004ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case ParameterEditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(CrossflowDiagramUpdater.getParameter_3002ContainedLinks(view));
+				result.addAll(CrossflowDiagramUpdater.getParameter_3005ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;
 		}
 		case Parameter2EditPart.VISUAL_ID: {
 			if (!domain2NotationMap.containsKey(view.getElement())) {
-				result.addAll(CrossflowDiagramUpdater.getParameter_3005ContainedLinks(view));
+				result.addAll(CrossflowDiagramUpdater.getParameter_3006ContainedLinks(view));
 			}
 			domain2NotationMap.putView(view.getElement(), view);
 			break;

@@ -60,7 +60,7 @@ public class SerializerNameEditPart extends CompartmentEditPart implements IText
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 5023;
+	public static final int VISUAL_ID = 5021;
 
 	/**
 	* @generated
@@ -291,7 +291,7 @@ public class SerializerNameEditPart extends CompartmentEditPart implements IText
 	*/
 	public IParser getParser() {
 		if (parser == null) {
-			parser = CrossflowParserProvider.getParser(CrossflowElementTypes.Serializer_2018, getParserElement(),
+			parser = CrossflowParserProvider.getParser(CrossflowElementTypes.Serializer_2015, getParserElement(),
 					CrossflowVisualIDRegistry.getType(crossflow.diagram.edit.parts.SerializerNameEditPart.VISUAL_ID));
 		}
 		return parser;

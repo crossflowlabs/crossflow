@@ -22,7 +22,7 @@ public class DataField2ItemSemanticEditPolicy extends CrossflowBaseItemSemanticE
 	* @generated
 	*/
 	public DataField2ItemSemanticEditPolicy() {
-		super(CrossflowElementTypes.DataField_3006);
+		super(CrossflowElementTypes.DataField_3001);
 	}
 
 	/**

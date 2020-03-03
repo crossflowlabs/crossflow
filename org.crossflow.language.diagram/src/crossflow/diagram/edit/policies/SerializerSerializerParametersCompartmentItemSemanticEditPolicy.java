@@ -19,14 +19,14 @@ public class SerializerSerializerParametersCompartmentItemSemanticEditPolicy
 	* @generated
 	*/
 	public SerializerSerializerParametersCompartmentItemSemanticEditPolicy() {
-		super(CrossflowElementTypes.Serializer_2018);
+		super(CrossflowElementTypes.Serializer_2015);
 	}
 
 	/**
 	* @generated
 	*/
 	protected Command getCreateCommand(CreateElementRequest req) {
-		if (CrossflowElementTypes.Parameter_3005 == req.getElementType()) {
+		if (CrossflowElementTypes.Parameter_3006 == req.getElementType()) {
 			return getGEFWrapper(new Parameter2CreateCommand(req));
 		}
 		return super.getCreateCommand(req);

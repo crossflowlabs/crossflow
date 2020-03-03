@@ -33,7 +33,7 @@ public class TypeTypeFieldsCompartmentEditPart extends ListCompartmentEditPart {
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 7001;
+	public static final int VISUAL_ID = 7002;
 
 	/**
 	* @generated
@@ -94,10 +94,10 @@ public class TypeTypeFieldsCompartmentEditPart extends ListCompartmentEditPart {
 			CreateElementRequestAdapter adapter = ((CreateViewAndElementRequest) request).getViewAndElementDescriptor()
 					.getCreateElementRequestAdapter();
 			IElementType type = (IElementType) adapter.getAdapter(IElementType.class);
-			if (type == CrossflowElementTypes.DataField_3008) {
+			if (type == CrossflowElementTypes.DataField_3003) {
 				return this;
 			}
-			if (type == CrossflowElementTypes.EnumField_3009) {
+			if (type == CrossflowElementTypes.EnumField_3004) {
 				return this;
 			}
 			return getParent().getTargetEditPart(request);

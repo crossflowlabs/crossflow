@@ -60,7 +60,7 @@ public class ScriptedTaskNameEditPart extends CompartmentEditPart implements ITe
 	/**
 	* @generated
 	*/
-	public static final int VISUAL_ID = 5017;
+	public static final int VISUAL_ID = 5011;
 
 	/**
 	* @generated
@@ -291,7 +291,7 @@ public class ScriptedTaskNameEditPart extends CompartmentEditPart implements ITe
 	*/
 	public IParser getParser() {
 		if (parser == null) {
-			parser = CrossflowParserProvider.getParser(CrossflowElementTypes.ScriptedTask_2015, getParserElement(),
+			parser = CrossflowParserProvider.getParser(CrossflowElementTypes.ScriptedTask_2009, getParserElement(),
 					CrossflowVisualIDRegistry.getType(crossflow.diagram.edit.parts.ScriptedTaskNameEditPart.VISUAL_ID));
 		}
 		return parser;

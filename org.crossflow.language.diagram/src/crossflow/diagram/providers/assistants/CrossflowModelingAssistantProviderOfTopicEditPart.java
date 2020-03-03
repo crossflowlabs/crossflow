@@ -15,7 +15,6 @@ import crossflow.diagram.edit.parts.CommitmentTaskEditPart;
 import crossflow.diagram.edit.parts.CsvSinkEditPart;
 import crossflow.diagram.edit.parts.CsvSourceEditPart;
 import crossflow.diagram.edit.parts.OpinionatedTaskEditPart;
-import crossflow.diagram.edit.parts.ReusableComponentEditPart;
 import crossflow.diagram.edit.parts.ScriptedTaskEditPart;
 import crossflow.diagram.edit.parts.SinkEditPart;
 import crossflow.diagram.edit.parts.SourceEditPart;
@@ -46,7 +45,7 @@ public class CrossflowModelingAssistantProviderOfTopicEditPart extends Crossflow
 	public List<IElementType> doGetRelTypesOnSource(TopicEditPart source) {
 		List<IElementType> types = new ArrayList<IElementType>(2);
 		types.add(CrossflowElementTypes.StreamType_4001);
-		types.add(CrossflowElementTypes.StreamInputOf_4005);
+		types.add(CrossflowElementTypes.StreamInputOf_4002);
 		return types;
 	}
 
@@ -70,31 +69,28 @@ public class CrossflowModelingAssistantProviderOfTopicEditPart extends Crossflow
 			types.add(CrossflowElementTypes.StreamType_4001);
 		}
 		if (targetEditPart instanceof CsvSourceEditPart) {
-			types.add(CrossflowElementTypes.StreamInputOf_4005);
+			types.add(CrossflowElementTypes.StreamInputOf_4002);
 		}
 		if (targetEditPart instanceof CsvSinkEditPart) {
-			types.add(CrossflowElementTypes.StreamInputOf_4005);
+			types.add(CrossflowElementTypes.StreamInputOf_4002);
 		}
 		if (targetEditPart instanceof SourceEditPart) {
-			types.add(CrossflowElementTypes.StreamInputOf_4005);
+			types.add(CrossflowElementTypes.StreamInputOf_4002);
 		}
 		if (targetEditPart instanceof SinkEditPart) {
-			types.add(CrossflowElementTypes.StreamInputOf_4005);
+			types.add(CrossflowElementTypes.StreamInputOf_4002);
 		}
 		if (targetEditPart instanceof CommitmentTaskEditPart) {
-			types.add(CrossflowElementTypes.StreamInputOf_4005);
+			types.add(CrossflowElementTypes.StreamInputOf_4002);
 		}
 		if (targetEditPart instanceof OpinionatedTaskEditPart) {
-			types.add(CrossflowElementTypes.StreamInputOf_4005);
+			types.add(CrossflowElementTypes.StreamInputOf_4002);
 		}
 		if (targetEditPart instanceof ScriptedTaskEditPart) {
-			types.add(CrossflowElementTypes.StreamInputOf_4005);
-		}
-		if (targetEditPart instanceof ReusableComponentEditPart) {
-			types.add(CrossflowElementTypes.StreamInputOf_4005);
+			types.add(CrossflowElementTypes.StreamInputOf_4002);
 		}
 		if (targetEditPart instanceof TaskEditPart) {
-			types.add(CrossflowElementTypes.StreamInputOf_4005);
+			types.add(CrossflowElementTypes.StreamInputOf_4002);
 		}
 		return types;
 	}
@@ -115,17 +111,16 @@ public class CrossflowModelingAssistantProviderOfTopicEditPart extends Crossflow
 	public List<IElementType> doGetTypesForTarget(TopicEditPart source, IElementType relationshipType) {
 		List<IElementType> types = new ArrayList<IElementType>();
 		if (relationshipType == CrossflowElementTypes.StreamType_4001) {
-			types.add(CrossflowElementTypes.Type_2011);
-		} else if (relationshipType == CrossflowElementTypes.StreamInputOf_4005) {
+			types.add(CrossflowElementTypes.Type_2013);
+		} else if (relationshipType == CrossflowElementTypes.StreamInputOf_4002) {
 			types.add(CrossflowElementTypes.CsvSource_2001);
 			types.add(CrossflowElementTypes.CsvSink_2002);
 			types.add(CrossflowElementTypes.Source_2005);
 			types.add(CrossflowElementTypes.Sink_2006);
 			types.add(CrossflowElementTypes.CommitmentTask_2007);
 			types.add(CrossflowElementTypes.OpinionatedTask_2008);
-			types.add(CrossflowElementTypes.ScriptedTask_2015);
-			types.add(CrossflowElementTypes.ReusableComponent_2017);
-			types.add(CrossflowElementTypes.Task_2010);
+			types.add(CrossflowElementTypes.ScriptedTask_2009);
+			types.add(CrossflowElementTypes.Task_2012);
 		}
 		return types;
 	}
@@ -171,9 +166,8 @@ public class CrossflowModelingAssistantProviderOfTopicEditPart extends Crossflow
 			types.add(CrossflowElementTypes.Sink_2006);
 			types.add(CrossflowElementTypes.CommitmentTask_2007);
 			types.add(CrossflowElementTypes.OpinionatedTask_2008);
-			types.add(CrossflowElementTypes.ScriptedTask_2015);
-			types.add(CrossflowElementTypes.ReusableComponent_2017);
-			types.add(CrossflowElementTypes.Task_2010);
+			types.add(CrossflowElementTypes.ScriptedTask_2009);
+			types.add(CrossflowElementTypes.Task_2012);
 		}
 		return types;
 	}
