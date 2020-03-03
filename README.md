@@ -1,5 +1,5 @@
 # Workflow Engine
-![Logo](https://github.com/crossminer/scava/raw/crossflow/crossflow/crossflow_96dpi.png)
+![Logo](https://github.com/crossflowlabs/crossflow/raw/master/crossflow_96dpi.png)
 
 Crossflow is a distributed data processing framework that supports dispensation of work across multiple opinionated and low-commitment workers.
 
@@ -16,7 +16,7 @@ Startup container:
 Access Crossflow web application:
 http://localhost/org.crossflow.web/
 
-More details on running Crossflow with Docker are available [here](https://github.com/crossminer/scava/tree/crossflow/crossflow/org.crossflow.web.docker/README.md).
+More details on running Crossflow with Docker are available [here](https://github.com/crossflowlabs/crossflow/tree/master/org.crossflow.web.docker/README.md).
 
 ## Running from source
 To run Crossflow from source you will need Eclipse, Apache Tomcat and Apache Thrift. Brief instructions are provided below.
@@ -55,9 +55,8 @@ To run Crossflow from source you will need Eclipse, Apache Tomcat and Apache Thr
 	- Homebrew for Mac
 
 ### Source Code (Git)
-- Clone the https://github.com/crossminer/scava/ repository
-- Switch to the crossflow branch
-- Import all projects from the crossflow and the restmule folders
+- Clone the https://github.com/crossflowlabs/crossflow.git repository
+- Import all projects
 
 ### Ivy
 We're using Apache Ivy for dependency management (i.e. so that we don't need to store jars in the repo)
@@ -66,7 +65,7 @@ We're using Apache Ivy for dependency management (i.e. so that we don't need to 
 - For the remainder of the projects with similar requirements, if Ivy doesn't run automatically, perform the same step as above.
 
 ### Generating stuff
-You will need to run the ANT build-files below to generate stuff after you import all the crossflow and restmule projects (if you wish to use the web, tests or examples project(s)).
+You will need to run the ANT build-files below to generate stuff after you import all the crossflow projects (if you wish to use the web, tests or examples project(s)).
 
 - org.crossflow.tests/generate-all-tests.xml runs the Crossflow code generator against all models under /org.crossflow.tests/models
 - org.crossflow.web/build-war.xml runs the Thrift code generator against crossflow.thrift to produce Java and JavaScript source code and builds a Tomcat WAR file from org.crossflow.web
@@ -82,35 +81,35 @@ You will need to run the ANT build-files below to generate stuff after you impor
 
 ### Screenshots
 
-![Screenshot](https://github.com/crossminer/scava/raw/crossflow/crossflow/images/index.png)
+![Screenshot](https://github.com/crossflowlabs/crossflow/raw/master/images/index.png)
 **Figure**: Main page listing available workflows and *Upload New Workflow* button.
 
-![Screenshot](https://github.com/crossminer/scava/raw/crossflow/crossflow/images/calculator-advanced.png)
+![Screenshot](https://github.com/crossflowlabs/crossflow/raw/master/images/calculator-advanced.png)
 **Figure**: Calculator experiment page *Advanced* tab listing Calculator workflow configuration.
 
-![Screenshot](https://github.com/crossminer/scava/raw/crossflow/crossflow/images/calculator-calculations.png)
+![Screenshot](https://github.com/crossflowlabs/crossflow/raw/master/images/calculator-calculations.png)
 **Figure**: Calculator experiment page *Calculations* tab listing Calculator workflow input calculations obtained from CSV source.
 
-![Screenshot](https://github.com/crossminer/scava/raw/crossflow/crossflow/images/calculator-model.png)
+![Screenshot](https://github.com/crossflowlabs/crossflow/raw/master/images/calculator-model.png)
 **Figure**: Calculator experiment page *Model* tab listing Calculator workflow model.
 
-![Screenshot](https://github.com/crossminer/scava/raw/crossflow/crossflow/images/calculator-log.png)
+![Screenshot](https://github.com/crossflowlabs/crossflow/raw/master/images/calculator-log.png)
 **Figure**: Calculator experiment page *Log* tab listing Calculator workflow log after experiment completion.
 
-![Screenshot](https://github.com/crossminer/scava/raw/crossflow/crossflow/images/wordcount-model.png)
+![Screenshot](https://github.com/crossflowlabs/crossflow/raw/master/images/wordcount-model.png)
 **Figure**: Word Count experiment page *Model* tab listing Word Count workflow model before execution.
 
-![Screenshot](https://github.com/crossminer/scava/raw/crossflow/crossflow/images/wordcount-model-running.png)
+![Screenshot](https://github.com/crossflowlabs/crossflow/raw/master/images/wordcount-model-running.png)
 **Figure**: Word Count experiment page *Model* tab listing Word Count workflow model during execution visualizing task status and queue size by means of color and rounded number, respectively. **Task status (color)**: STARTED (lightcyan), WAITING (skyblue), INPROGRESS (palegreen), BLOCKED (salmon), and FINISHED (slategrey).  
 
-![Screenshot](https://github.com/crossminer/scava/raw/crossflow/crossflow/images/wordcount-model-running-tooltip.png)
+![Screenshot](https://github.com/crossflowlabs/crossflow/raw/master/images/wordcount-model-running-tooltip.png)
 **Figure**: Word Count experiment page *Model* tab listing Word Count workflow model during execution with mouse hovering over initial queue depicting (queue) size, in-flight count, and subscriber count.
 
-![Screenshot](https://github.com/crossminer/scava/raw/crossflow/crossflow/images/wordcount-model-clear-all.png)
+![Screenshot](https://github.com/crossflowlabs/crossflow/raw/master/images/wordcount-model-clear-all.png)
 **Figure**: Word Count experiment page *Model* tab listing Word Count workflow model during execution with mouse click inside empty model area, i.e. not on a particular task or queue, displaying context menu popup to clear the cache of all queues involved in the Word Count workflow.
 
- ![Screenshot](https://github.com/crossminer/scava/raw/crossflow/crossflow/images/wordcount-model-clear-specific.png)
+ ![Screenshot](https://github.com/crossflowlabs/crossflow/raw/master/images/wordcount-model-clear-specific.png)
 **Figure**: Word Count experiment page *Model* tab listing Word Count workflow model during execution with mouse click inside boundaries of *WordFrequencies* queue displaying context menu popup to clear the cache of all queues involved in the Word Count workflow.
 
- ![Screenshot](https://github.com/crossminer/scava/raw/crossflow/crossflow/images/upload.png)
+ ![Screenshot](https://github.com/crossflowlabs/crossflow/raw/master/images/upload.png)
 **Figure**: Upload New Workflow page allowing the upload and deployment of new experiments.
