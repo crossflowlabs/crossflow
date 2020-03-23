@@ -11,6 +11,5 @@ Require-Bundle: org.eclipse.epsilon.eol.engine,
  org.eclipse.epsilon.emc.plainxml,
  org.eclipse.epsilon.flexmi,
  com.google.guava,
- org.eclipse.epsilon.evl.emf.validation,
- org.eclipse.ui.ide
+ org.eclipse.epsilon.evl.emf.validation
 Export-Package: org.crossflow
