@@ -1,2 +1,0 @@
-stomp.py==4.1.22
-xmltodict==0.12.0
