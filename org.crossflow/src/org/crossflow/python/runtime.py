@@ -9,10 +9,12 @@ to use a single connection and the subscribe functionality of stomp.py. This sho
 ActiveMQ session manager """
 from __future__ import annotations
 
+import argparse
 from abc import ABC, abstractmethod
 from concurrent.futures import Future
 import csv
 import datetime
+from distutils.util import strtobool
 from enum import Enum, auto
 import hashlib
 import logging
@@ -555,7 +557,7 @@ class Task(ABC):
         self._subscription_id = uuid.uuid4().int
         self._sent: Dict[str, bool] = {}
         self._active_job: Job = None
-        self._cancel_pending = False
+        self._cancel_pending = False    
 
     @property
     def task_id(self) -> str:
@@ -602,25 +604,32 @@ class Task(ABC):
     @property
     def active_job(self) -> Job:
         return self._active_job
-        
+
     @active_job.setter
     def active_job(self, active_job: Job):
         self._active_job = active_job
-    
+
+    @property
+    def active_job_id(self) -> str:
+        if (self.active_job is None):
+            return None
+        else:
+            return self.active_job.job_id
+
     @property
     def active_future(self) -> Future:
         return self._active_future
-        
+
     @active_future.setter
     def active_future(self, active_future: Future):
-        self._active_future = active_future        
+        self._active_future = active_future
 
     @property
     def active_root_ids(self) -> Set[str]:
         return (
             self.active_job.root_ids if self.active_job else set(self.active_job.job_id)
         )
-    
+
     @property
     def total_outputs(self) -> int:
         return list(self._sent.values()).count(True)
@@ -630,7 +639,7 @@ class Task(ABC):
 
     def task_unblocked(self):
         self._workflow.set_task_unblocked(self)
-        
+
     def cancel_job(self, payload: str) -> bool:
         """
         Signals this task to cancel the current executing Job if True is returned
@@ -642,7 +651,7 @@ class Task(ABC):
     def close(self):
         """Optional cleanup method to execute on close"""
         pass
-    
+
     def _pre_send(self, job: Job) -> Job:
         """
         Helper method for setting common Job fields before send
@@ -940,7 +949,16 @@ class JobStream(Stream):
     def get_rx_connection(self, destination):
         if destination in self._rx_connections:
             return self._rx_connections[destination]
+
+        # Connection setup
         connection = stomp.Connection(self.workflow.broker)
+        if self.workflow.use_ssl:
+            connection.set_ssl(
+                for_hosts=self.workflow.broker,
+                key_file=self.workflow.ssl_key,
+                cert_file=self.workflow.ssl_cert,
+                ca_certs=self.workflow.ssl_ca_cert,
+            )
         connection.connect(wait=True)  # add credentials?
         self._rx_connections[destination] = connection
         return connection
@@ -1155,6 +1173,10 @@ class Workflow(ABC):
         delete_cache=None,
         excluded_tasks=None,
         enable_prefetch=False,
+        use_ssl=False,
+        ssl_key=None,
+        ssl_cert=None,
+        ssl_ca_certs=None,
     ):
         # General properties
         self._name = name
@@ -1162,6 +1184,12 @@ class Workflow(ABC):
         self._broker_host = broker_host
         self._stomp_port = stomp_port
         self._mode = mode
+
+        # SSL
+        self._use_ssl = use_ssl
+        self._ssl_key = ssl_key
+        self._ssl_cert = ssl_cert
+        self._ssl_ca_certs = ssl_ca_certs
 
         # Cache related
         self._cache = cache
@@ -1338,6 +1366,42 @@ class Workflow(ABC):
     @temp_directory.setter
     def temp_directory(self, temp_directory: str):
         self._temp_directory = temp_directory
+
+    @property
+    def use_ssl(self) -> bool:
+        return self._use_ssl
+
+    @use_ssl.setter
+    def use_ssl(self, use_ssl: bool):
+        self._use_ssl = use_ssl
+
+    @property
+    def ssl_key(self) -> str:
+        """Path to a X509 Key File"""
+        return self._ssl_key
+
+    @ssl_key.setter
+    def ssl_key(self, ssl_key: str):
+        self._ssl_key = ssl_key
+
+    @property
+    def ssl_cert(self) -> str:
+        """Path to a X509 Certificate"""
+        return self._ssl_cert
+
+    @ssl_cert.setter
+    def ssl_cert(self, ssl_cert: str):
+        self._ssl_cert = ssl_cert
+
+    @property
+    def ssl_ca_certs(self) -> str:
+        return self._ssl_ca_certs
+
+    @ssl_ca_certs.setter
+    def ssl_ca_certs(self, ssl_ca_certs: str):
+        """Path to the a file containing CA certificates to validate the server against.
+                         If this is not set, server side certificate validation is not done."""
+        self._ssl_ca_certs = ssl_ca_certs
 
     @abstractmethod
     def _create_serializer(self) -> serialization.Serializer:
@@ -1633,3 +1697,79 @@ class FailedJob(object):
     @workflow.setter
     def workflow(self, workflow: str):
         self._workflow = workflow
+
+
+class WorkflowConfig:
+    def __init__(self):
+        self._parser = argparse.ArgumentParser(
+            description="OMG Crossflow Python Worker"
+        )
+        self._parsed_args = None
+
+    def _config(self):
+        if not self._parsed_args:
+            self._add_arg("-name", "NAME", "Workflow", "The name of the workflow")
+            self._add_arg(
+                "-brokerHost", "BROKER_HOST", "localhost", "Host of the JMX Broker"
+            )
+            self._add_arg("-brokerPort", "BROKER_PORT", 61613, "Port of the JMX Broker")
+            self._add_arg(
+                "-instance",
+                "INSTANCE",
+                "instance",
+                "The instance of the master (to contribute to)",
+            )
+            self._add_arg("-mode", "MODE", "WORKER", "Must be one of WORKER or API")
+            self._add_arg("-useSSL", "USE_SSL", "False", "Turn SSL on")
+            self._add_arg("-sslKey", "SSL_KEY", None, "Path to Client SSL key")
+            self._add_arg("-sslCert", "SSL_CERT", None, "Path to Client SSL Cert")
+            self._add_arg(
+                "-sslCACerts",
+                "SSL_CA_CERTS",
+                None,
+                "Path to CA Certs for Server side validation",
+            )
+            self._parsed_args = self._parser.parse_args(sys.argv[1 : len(sys.argv)])
+
+        return self._parsed_args
+
+    def _add_arg(self, cli_key: str, env_key: str, default=None, help_info: str = None):
+        # CLI args take precedence over env args
+        env_value = os.getenv(env_key, default)
+        self._parser.add_argument(cli_key, default=env_value, help=help_info)
+
+    @property
+    def name(self) -> str:
+        return self._config().name
+
+    @property
+    def broker_host(self) -> str:
+        return self._config().brokerHost
+
+    @property
+    def broker_port(self) -> int:
+        return self._config().brokerPort
+
+    @property
+    def instance(self) -> str:
+        return self._config().instance
+
+    @property
+    def mode(self) -> Mode:
+        return Mode.enum_from_name(self._config().mode)
+
+    @property
+    def use_ssl(self) -> bool:
+        return strtobool(self._config().useSSL)
+
+    @property
+    def ssl_key(self) -> str:
+        return self._config().sslKey
+
+    @property
+    def ssl_cert(self) -> str:
+        return self._config().sslCert
+
+    @property
+    def ssl_ca_certs(self) -> str:
+        return self._config().sslCACerts

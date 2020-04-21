@@ -1,7 +1,5 @@
 [%import "../util.eol";
 import "pythonUtil.eol";%]
-import argparse
-import sys
 import time
 
 # Tasks
@@ -23,7 +21,7 @@ from crossflow.[%=package%].[%=s.name.toSnakeCaseLower()%] import [%=s.name%]
 
 # Utility
 from crossflow.[%=package%].[%=w.name.toSnakeCaseLower()%]_tasks import [%=w.name%]Tasks
-from crossflow.runtime import BuiltinStream, Mode, Workflow
+from crossflow.runtime import BuiltinStream, Mode, LogLevel, Workflow, WorkflowConfig
 from crossflow.serialization import Serializer, JsonSerializer
 
 
@@ -44,7 +42,11 @@ class [%=w.name%](Workflow):
         cache_enabled=True,
         delete_cache=None,
         excluded_tasks=None,
-        enable_prefetch=False
+        enable_prefetch=False,
+        use_ssl=False,
+        ssl_key=None,
+        ssl_cert=None,
+        ssl_ca_certs=None,
     ):
                  
         super().__init__(name=name,
@@ -56,7 +58,11 @@ class [%=w.name%](Workflow):
                          cache_enabled=cache_enabled,
                          delete_cache=delete_cache,
                          excluded_tasks=excluded_tasks,
-                         enable_prefetch=enable_prefetch)
+                         enable_prefetch=enable_prefetch,
+                         use_ssl=use_ssl,
+                         ssl_key=ssl_key,
+                         ssl_cert=ssl_cert,
+                         ssl_ca_certs=ssl_ca_certs)
                          
         # Streams
         [%for (s in w.streams) { %]
@@ -71,6 +77,20 @@ class [%=w.name%](Workflow):
             self.[%=t.name.ftlc()%].workflow = self
             self._tasks.append(self.[%=t.name.ftlc()%])
         [%}%]
+        
+    @classmethod
+    def from_config(cls, config: WorkflowConfig):
+        return cls(
+    		name=config.name,
+            instance=config.instance,
+            broker_host=config.broker_host,
+            stomp_port=config.broker_port,
+            mode=config.mode,
+            use_ssl=config.use_ssl,
+            ssl_key=config.ssl_key,
+            ssl_cert=config.ssl_cert,
+            ssl_ca_certs=config.ssl_ca_certs,
+        )
 
     def excluded_tasks(self, tasks=[]):
         assert isinstance(tasks, list)
@@ -149,23 +169,10 @@ class [%=w.name%](Workflow):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-name', default='[%=w.name%]Python', help='The name of the workflow')
-    parser.add_argument('-brokerHost', default='localhost', help='Host of the JMX broker')
-    parser.add_argument('-stompPort', default=61613, help='Port to use for stomp based messages')
-    parser.add_argument('-instance', default=None, help='The instance of the master (to contribute to)')
-    parser.add_argument('-mode', default='WORKER', help='must be one of WORKER or API')
-    
-    parsedArgs = parser.parse_args(sys.argv[1:len(sys.argv)])
-    
-    app = [%=w.name%](name=parsedArgs.name,
-                      instance=parsedArgs.instance,
-                      broker_host=parsedArgs.brokerHost,
-                      stomp_port=parsedArgs.stompPort,
-                      mode=Mode.enum_from_name(parsedArgs.mode))
-                      
+    config = WorkflowConfig()
+    app = [%=w.name%].from_config(config)
     app.run()
-
+    app.logger.log(LogLevel.INFO, "Finished Startup")
     while (not app.terminated):
         time.sleep(0.1)
     print("terminated")
