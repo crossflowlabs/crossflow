@@ -6,7 +6,7 @@ from crossflow.runtime import WorkflowConfig
 
 
 if __name__ == '__main__':
-	config = WorkflowConfig()
+    config = WorkflowConfig()
     app = [%=w.name%].from_config(config)
     app.run()
     app.logger.log(LogLevel.INFO, "Finished Startup")

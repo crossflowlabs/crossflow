@@ -20,14 +20,14 @@ class [%=t.name%]([%=t.name%]Base):
     def __init__(self):
         super().__init__()
         
-    [%for (s in t.inout) {%]
+    [%for (s in t.input) {%]
     def consume_[%=s.name.toSnakeCaseLower()%](self, input_job: [%=s.type.name%]):
-        print(f"{self.workflow.name}:[%=t.name%]:consume_[%=self.name.toSnakeCaseLower()%] received {input_job}")
+        print(f"{self.workflow.name}:[%=t.name%]:consume_[%=s.name.toSnakeCaseLower()%] received {input_job}")
     
         # TODO: Add impementation here
         # Send output jobs
         
-        [%for (o in s.output) {%]
+        [%for (o in t.output) {%]
         [%=o.type.name.toSnakeCase()%]_output = [%=o.type.name%]()
             [%if (t.isSingleOut()) {%]
         return [%=o.type.name.toSnakeCase()%]_output
@@ -38,7 +38,7 @@ class [%=t.name%]([%=t.name%]Base):
         }%]
     
     def on_consume_[%=s.name.toSnakeCaseLower()%]_timeout(self, input_job: [%=s.type.name%]):
-        super().on_consume_[%=s.name.toSnakeCaseLower()%]_timeout(input_job: [%=s.type.name%])
+        super().on_consume_[%=s.name.toSnakeCaseLower()%]_timeout(input_job)
         
     def on_consume_[%=s.name.toSnakeCaseLower()%]_cancelled(self, input_job: [%=s.type.name%]):
         super().on_consume_[%=s.name.toSnakeCaseLower()%]_cancelled(input_job)

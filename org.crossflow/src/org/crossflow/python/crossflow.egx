@@ -142,11 +142,10 @@ operation Any getSupportFolder() : String {
 }
 
 operation String toPath() : String {
-	var path = self.replaceAll("\\.", "/");
-	if (path.endsWith("/")) {
-		return path;
+	if (self.endsWith("/")) {
+		return self;
 	}
-	return path + "/";
+	return self + "/";
 }
 
 operation Task appliesTo() : Boolean {
