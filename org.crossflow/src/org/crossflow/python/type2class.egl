@@ -49,7 +49,7 @@ for (f in t.~fields) {
             
         // Default
         default:
-            f.~pyType = f.name.ftuc();
+            f.~pyType = f.type.ftuc();
         }
     } 
     // EnumField
@@ -71,10 +71,16 @@ from crossflow.runtime import Job
 
 if (t.extending.isDefined()) {%]
 from crossflow.[%=package%].[%=t.extending.name.toSnakeCaseLower()%] import [%=t.extending.name%]
-[%}%]
+[%}
+
+for (o in t.~fields.collect(f|f.type)) {
+	if (CrossflowLanguageModel!Type.all.collect(f|f.name).flatten().contains(o)) {%]
+from crossflow.[%=package%].[%=o.toSnakeCaseLower()%] import [%=o%]		
+	[% }
+} %]
 
 
-[% 
+[%
 // Generate enum types - generate before main type for typehinting support
 for (f in t.fields.select(f|f.isTypeOf(CrossflowLanguageModel!EnumField))) {%]
 @unique

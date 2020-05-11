@@ -2,7 +2,7 @@
 import time
 
 from crossflow.[%=package%].[%=w.name.toSnakeCaseLower()%] import [%=w.name%]
-from crossflow.runtime import WorkflowConfig
+from crossflow.runtime import LogLevel, WorkflowConfig
 
 
 if __name__ == '__main__':
