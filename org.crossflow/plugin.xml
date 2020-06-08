@@ -10,6 +10,7 @@
             namespaceURI="org.crossflow">
       </constraintsBinding>
    </extension>
+   <!--
    <extension
          point="org.eclipse.ui.ide.markerResolution">
       <markerResolutionGenerator
@@ -21,5 +22,5 @@
             markerType="org.eclipse.emf.ecore.diagnostic">
       </markerResolutionGenerator>
    </extension>
-
+   -->
 </plugin>
