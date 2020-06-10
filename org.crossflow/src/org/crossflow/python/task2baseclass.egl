@@ -76,9 +76,7 @@ class [%=t.name%]Base(Task):
         
     [%}%]
     [%for (s in t.input) { %]
-    def consume_[%=s.name.toSnakeCaseLower()%]_with_notifications(self, input_job: [%=s.type.name%]):
-        print(f"Received {input_job}")
-        
+    def consume_[%=s.name.toSnakeCaseLower()%]_with_notifications(self, input_job: [%=s.type.name%]):        
         try:
             self.active_job = input_job
             job_id = input_job.job_id # keep in local scope for logging and error reporting

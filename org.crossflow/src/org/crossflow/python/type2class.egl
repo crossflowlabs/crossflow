@@ -139,7 +139,7 @@ class [%=t.name%][%if (t.getSuperType().isDefined()) {%]([%=t.getSuperType()%])[
         }
         var format = "";
         for (n in names) {
-        	format += n + "={self." + n + "}";
+        	format += n + "={str(self." + n + ")}";
         	if (hasMore) format += ", ";
         }
         %]

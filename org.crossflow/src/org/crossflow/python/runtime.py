@@ -64,7 +64,7 @@ class LogLevel(Enum):
             return LogLevel[name.upper()]
         except KeyError:
             raise ValueError(
-                f"No LogLevel exists with name '{name.upper()}'. "
+                f"No LogLevel exists with name '{name.upper()}'. ",
                 f"Must be one of  {', '.join([i.name for i in LogLevel])}"
             )
 
