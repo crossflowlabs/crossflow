@@ -65,7 +65,7 @@ class LogLevel(Enum):
         except KeyError:
             raise ValueError(
                 f"No LogLevel exists with name '{name.upper()}'. ",
-                f"Must be one of  {', '.join([i.name for i in LogLevel])}"
+                f"Must be one of  {', '.join([i.name for i in LogLevel])}",
             )
 
 
@@ -557,7 +557,7 @@ class Task(ABC):
         self._subscription_id = uuid.uuid4().int
         self._sent: Dict[str, bool] = {}
         self._active_job: Job = None
-        self._cancel_pending = False    
+        self._cancel_pending = False
 
     @property
     def task_id(self) -> str:
@@ -611,7 +611,7 @@ class Task(ABC):
 
     @property
     def active_job_id(self) -> str:
-        if (self.active_job is None):
+        if self.active_job is None:
             return None
         else:
             return self.active_job.job_id
@@ -1700,40 +1700,41 @@ class FailedJob(object):
 
 
 class WorkflowConfig:
-    def __init__(self):
-        self._parser = argparse.ArgumentParser(
-            description="OMG Crossflow Python Worker"
-        )
+    def __init__(self, name="Crossflow Python Worker"):
+        self._parser = argparse.ArgumentParser(description=name)
         self._parsed_args = None
 
     def _config(self):
         if not self._parsed_args:
-            self._add_arg("-name", "NAME", "Workflow", "The name of the workflow")
-            self._add_arg(
-                "-brokerHost", "BROKER_HOST", "localhost", "Host of the JMX Broker"
-            )
-            self._add_arg("-brokerPort", "BROKER_PORT", 61613, "Port of the JMX Broker")
-            self._add_arg(
-                "-instance",
-                "INSTANCE",
-                "instance",
-                "The instance of the master (to contribute to)",
-            )
-            self._add_arg("-mode", "MODE", "WORKER", "Must be one of WORKER or API")
-            self._add_arg("-useSSL", "USE_SSL", "False", "Turn SSL on")
-            self._add_arg("-sslKey", "SSL_KEY", None, "Path to Client SSL key")
-            self._add_arg("-sslCert", "SSL_CERT", None, "Path to Client SSL Cert")
-            self._add_arg(
-                "-sslCACerts",
-                "SSL_CA_CERTS",
-                None,
-                "Path to CA Certs for Server side validation",
-            )
+            self.setup_args()
             self._parsed_args = self._parser.parse_args(sys.argv[1 : len(sys.argv)])
 
         return self._parsed_args
 
-    def _add_arg(self, cli_key: str, env_key: str, default=None, help_info: str = None):
+    def setup_args(self):
+        self.add_arg("-name", "NAME", "Workflow", "The name of the workflow")
+        self.add_arg(
+            "-brokerHost", "BROKER_HOST", "localhost", "Host of the JMX Broker"
+        )
+        self.add_arg("-brokerPort", "BROKER_PORT", 61613, "Port of the JMX Broker")
+        self.add_arg(
+            "-instance",
+            "INSTANCE",
+            "instance",
+            "The instance of the master (to contribute to)",
+        )
+        self.add_arg("-mode", "MODE", "WORKER", "Must be one of WORKER or API")
+        self.add_arg("-useSSL", "USE_SSL", "False", "Turn SSL on")
+        self.add_arg("-sslKey", "SSL_KEY", None, "Path to Client SSL key")
+        self.add_arg("-sslCert", "SSL_CERT", None, "Path to Client SSL Cert")
+        self.add_arg(
+            "-sslCACerts",
+            "SSL_CA_CERTS",
+            None,
+            "Path to CA Certs for Server side validation",
+        )
+
+    def add_arg(self, cli_key: str, env_key: str, default=None, help_info: str = None):
         # CLI args take precedence over env args
         env_value = os.getenv(env_key, default)
         self._parser.add_argument(cli_key, default=env_value, help=help_info)
