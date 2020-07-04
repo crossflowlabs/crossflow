@@ -1733,6 +1733,7 @@ class WorkflowConfig:
             None,
             "Path to CA Certs for Server side validation",
         )
+        self.add_arg("-outputDirectory", "OUTPUT_DIRECTORY", "output", "Path to the output directory")
 
     def add_arg(self, cli_key: str, env_key: str, default=None, help_info: str = None):
         # CLI args take precedence over env args
@@ -1774,3 +1775,7 @@ class WorkflowConfig:
     @property
     def ssl_ca_certs(self) -> str:
         return self._config().sslCACerts
+    
+    @property
+    def output_directory(self) -> str:
+        return self._config().outputDirectory

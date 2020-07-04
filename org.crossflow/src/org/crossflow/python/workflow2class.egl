@@ -80,7 +80,7 @@ class [%=w.name%](Workflow):
         
     @classmethod
     def from_config(cls, config: WorkflowConfig):
-        return cls(
+        workflow = cls(
     		name=config.name,
             instance=config.instance,
             broker_host=config.broker_host,
@@ -91,6 +91,8 @@ class [%=w.name%](Workflow):
             ssl_cert=config.ssl_cert,
             ssl_ca_certs=config.ssl_ca_certs,
         )
+        workflow.output_directory = config.output_directory
+        return workflow
 
     def excluded_tasks(self, tasks=[]):
         assert isinstance(tasks, list)
