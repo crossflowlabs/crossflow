@@ -73,7 +73,7 @@ public abstract class Workflow<E extends Enum<E>> {
 	 * CONNECTIONS
 	 */
 	@Parameter(names = { "-master", "-brokerHost" }, description = "Host of the JMX Broker")
-	protected String master = "localhost";
+	protected String master = "0.0.0.0";
 
 	@Parameter(names = { "-port" }, description = "Port of the JMX Broker")
 	protected int port = 61616;
