@@ -7,8 +7,12 @@ import javax.jms.IllegalStateException;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.ActiveMQSession;
 import org.apache.activemq.command.ActiveMQDestination;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class JobStream<T extends Job> implements Stream {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(JobStream.class);
 
 	protected Map<String, ActiveMQDestination> destination;
 	protected Map<String, ActiveMQDestination> pre;
@@ -34,7 +38,10 @@ public abstract class JobStream<T extends Job> implements Stream {
 	private Long lastIllegalStateException = 0L;
 
 	public void send(T job, String taskId) {
+		
+		
 		try {
+
 			ActiveMQDestination d = null;
 			// if the sender is one of the targets of this stream, it has re-sent a message
 			// so it should only be put in the relevant physical queue
@@ -59,6 +66,7 @@ public abstract class JobStream<T extends Job> implements Stream {
 			if (!(ex instanceof IllegalStateException))
 				workflow.reportInternalException(ex);
 			else {
+				LOGGER.error("ISE encountered in JobStream", ex);
 				Long currentTime = System.currentTimeMillis();
 				if (currentTime - lastIllegalStateException > 1000) {
 					System.err.println(ex.getMessage() + ", suppressing similar errors for 1 second.");

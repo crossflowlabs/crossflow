@@ -40,10 +40,14 @@ import org.crossflow.runtime.utils.StreamMetadata;
 import org.crossflow.runtime.utils.StreamMetadataSnapshot;
 import org.crossflow.runtime.utils.TaskStatus;
 import org.crossflow.runtime.utils.TaskStatus.TaskStatuses;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.beust.jcommander.Parameter;
 
 public abstract class Workflow<E extends Enum<E>> {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(Workflow.class);
 
 	@Parameter(names = { "--help", "-h" }, description = "Help descriptions", help = true)
 	private boolean help = false;
@@ -73,7 +77,7 @@ public abstract class Workflow<E extends Enum<E>> {
 	 * CONNECTIONS
 	 */
 	@Parameter(names = { "-master", "-brokerHost" }, description = "Host of the JMX Broker")
-	protected String master = "0.0.0.0";
+	protected String master = "localhost";
 
 	@Parameter(names = { "-port" }, description = "Port of the JMX Broker")
 	protected int port = 61616;
@@ -345,12 +349,14 @@ public abstract class Workflow<E extends Enum<E>> {
 
 		if (isMaster()) {
 			taskStatusTopic.addConsumer(new BuiltinStreamConsumer<TaskStatus>() {
-
+				
+				private final Logger LOGGER = LoggerFactory.getLogger("TaskStatusTopic");
+				
 				@Override
 				public void consume(TaskStatus status) {
-					// NumberPairSource:Master : INPROGRESS
-					// System.err.println("consumeTaskStatusTopic on " + getName() + " : " +
-					// status.getCaller() + " : " + status.getStatus());
+					
+					LOGGER.info(status.toString());
+					
 					switch (status.getStatus()) {
 
 					case INPROGRESS: {
@@ -1006,6 +1012,9 @@ public abstract class Workflow<E extends Enum<E>> {
 	Class<?> lastexceptionType = this.getClass();
 
 	public void reportInternalException(Exception ex) {
+		
+		LOGGER.error("Internal Error occurred", ex);
+		
 		try {
 			internalExceptionsQueue.send(new InternalException(ex, this.getName()));
 		} catch (Throwable e) {
