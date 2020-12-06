@@ -1,0 +1,21 @@
+<project default="main">
+	<target name="main">
+		
+		<epsilon.emf.register file="../../plugins/org.crossflow.language/model/crossflow.ecore"/>
+		
+		<!-- epsilon.for requires Epsilon 1.6 -->
+		<epsilon.for>
+			<fileset dir="models" excludes="graphviz.egl"></fileset>
+			<epsilon.emf.loadModel name="CrossflowLanguageModel" modelfile="models/${it}"
+				metamodeluri="org.crossflow" read="true" store="false"/>
+			<epsilon.egl src="../../plugins/org.crossflow/src/org/crossflow/java/crossflow.egx" outputroot=".">
+				<model ref="CrossflowLanguageModel"/>
+			</epsilon.egl>
+			<epsilon.egl src="../../plugins/org.crossflow/src/org/crossflow/python/crossflow.egx" outputroot=".">
+				<model ref="CrossflowLanguageModel"/>
+			</epsilon.egl>
+			<epsilon.disposeModel model="CrossflowLanguageModel"/>
+		</epsilon.for>
+		<eclipse.refreshLocal resource="org.crossflow.tests" depth="-1"/>
+	</target>
+</project>
