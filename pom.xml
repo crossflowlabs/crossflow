@@ -6,7 +6,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.crossflow</groupId>
-	<artifactId>org.crossflow.parent</artifactId>
+	<artifactId>crossflow</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
@@ -17,22 +17,8 @@
 	</properties>
 
 	<modules>
-
-		<module>org.crossflow</module>
-		<module>org.crossflow.dt</module>
-		<module>org.crossflow.language</module>
-		<module>org.crossflow.language.diagram</module>
-		<module>org.crossflow.language.edit</module>
-		<module>org.crossflow.language.editor</module>
-<!-- 		<module>org.crossflow.language.tests</module> -->
-		<module>org.crossflow.runtime</module>
-		<module>org.crossflow.runtime.dependencies</module>
-		<module>org.crossflow.targetplatform</module>
-<!--		<module>org.crossflow.tests</module> -->
-<!--  		<module>org.crossflow.web</module> -->
-<!-- 		<module>org.crossflow.web.docker</module> -->
-<!-- 		<module>org.crossflow.web.tests</module> -->
-
+		<module>plugins</module>
+		<module>releng</module>
 	</modules>
 
 	<build>
