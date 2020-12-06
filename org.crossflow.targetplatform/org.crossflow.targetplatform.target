@@ -2,7 +2,7 @@
 <?pde version="3.8"?><target name="Crossflow Target Platform" sequenceNumber="112">
 <locations>
 	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
-		<unit id="org.eclipse.emf.emfatic.feature.group" version="0.8.0.202003210840"/>
+		<unit id="org.eclipse.emf.emfatic.feature.group" version="0.0.0"/>
 		<repository location="https://download.eclipse.org/emfatic/update/"/>
 	</location>
 	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
