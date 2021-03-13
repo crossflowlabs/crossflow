@@ -277,7 +277,7 @@ public class GenerateImplementations {
 
 	public EmfModel getModel() throws Exception {
 		EmfModel model = createAndLoadAnEmfModel(
-				"org.crossflow, http://www.eclipse.org/gmf/runtime/1.0.2/notation",
+				"org.crossflow, http://www.eclipse.org/gmf/runtime/1.0.3/notation",
 				modelRelativePath, "CrossflowLanguageModel", true, false, true);
 		model.getAliases().add("Global");
 		return model;
