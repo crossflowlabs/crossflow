@@ -143,53 +143,12 @@ def consume_[%=self.name.toSnakeCaseLower()%]_with_notifications(self, input_job
         job_id = input_job.job_id # keep in local scope for logging and error reporting
         
         # Delegate function to perform actual processing and confirmation messaging
-        def delegate():
-            self.workflow.set_task_in_progress(self, input_job.job_id)
+        # def delegate():
+        self.workflow.set_task_in_progress(self, input_job.job_id)
 [% }
 
 @template
 operation CrossflowLanguageModel!Stream createEndOfConsumeMethod() {%]
-        
-        # Start execution in a separate process
-        process = multiprocessing.Process(target=delegate)
-        process.start()
-        
-        # Calculate the timeout searching in order of input_job, default set in task, and finally setting to no timeout            
-        if self.active_job.timeout > 0:
-            timeout = self.active_job.timeout
-        elif self.timeout > 0:
-            timeout = self.timeout
-        else:
-            timeout = 0
-        
-        # Loop
-        time_left = timeout
-        while process.exitcode is None:
-            # Check if a cancel signal was received for the current job
-            if self._cancel_pending:
-                process.terminate()
-                raise Exception(f"{job_id} cancelled")
-            
-            # Check timeout has not been reached
-            if timeout > 0 and time_left <= 0:
-                process.terminate()
-                raise TimeoutError(f"{job_id} timed out after {timeout}")
-                
-            time.sleep(1)
-            time_left -= 1
-
-    # Timeout reached
-    except TimeoutError as ex:
-        try:
-            self.workflow.report_internal_exception(ex)
-            if self.active_job is not None:
-                send = self.on_consume_[%=self.name.toSnakeCaseLower()%]_timeout(self.active_job)
-                if send:
-                    self.active_job.failures += 1
-                    self.workflow.failed_jobs_topic.send(FailedJob.from_exception(self.active_job, ex, self))
-        except:
-            self.workflow.report_internal_exception(ex)
-
     # All other exceptions  
     except Exception as ex:
         try:
