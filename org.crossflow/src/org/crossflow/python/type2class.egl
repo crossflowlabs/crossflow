@@ -105,7 +105,7 @@ class [%=t.name%][%if (t.getSuperType().isDefined()) {%]([%=t.getSuperType()%])[
     [% if (not t.~fields.isEmpty() or t.isJob()) {%]
     def __init__(self,
         [% for (f in t.~fields) {%]
-        [%=f.name.toSnakeCaseLower()%]: [%=f.~pyType%] = [% if (f.many) {%][][%} else {%]None[%}%],
+        [%=f.name.toSnakeCaseLower()%]: [%=f.~pyType%] = None,
         [%}
         if (t.isJob()) {%]
         correlation_id: Union["[%=t.name%]", Job, str] = None
@@ -114,7 +114,8 @@ class [%=t.name%][%if (t.getSuperType().isDefined()) {%]([%=t.getSuperType()%])[
     ):
         super().__init__([% if (t.isJob()) {%]correlation_id=correlation_id[%}%])
         [% for (f in t.~fields) {%]
-        self._[%=f.name.toSnakeCaseLower()%] = [%=f.name.toSnakeCaseLower()%]
+        self._[%=f.name.toSnakeCaseLower()%] = [%=f.name.toSnakeCaseLower()%][% if (f.many){%] or [][%}%]
+        
         [%}
     }%]
 
