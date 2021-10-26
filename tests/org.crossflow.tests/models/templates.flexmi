@@ -17,11 +17,21 @@
 		<parameter name="to"/>
 		<parameter name="multipleOutputs"/>
 		<content>
-			<task multipleOutputs="${multipleOutputs}" name="${name}" out="${to}" :in="Sequence{out}"/>
+			<task name="${name}" out="${to}" :in="Sequence{out}"/>
 			<queue name="${to}" type="${produces}" :var="out"/>
 		</content>
 	</:template>
-	
+
+	<:template name="multi-output-task">
+		<parameter name="name"/>
+		<parameter name="produces"/>
+		<parameter name="to"/>
+		<content>
+			<task multipleOutputs="true" name="${name}" out="${to}" :in="Sequence{out}"/>
+			<queue name="${to}" type="${produces}" :var="out"/>
+		</content>
+	</:template>
+		
 	<:template name="simple-sink">
 		<parameter name="name"/>
 		<content>

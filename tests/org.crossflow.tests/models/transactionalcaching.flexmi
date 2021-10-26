@@ -6,7 +6,7 @@
 	<!-- Minimal example -->
 	<workflow name="MinimalWorkflow">
 		<simple-source name="MinimalSource" produces="Element" to="Input"/>
-		<simple-task multipleOutputs="true" name="ClonerTask" produces="Element" to="Output"/>
+		<multi-output-task name="ClonerTask" produces="Element" to="Output"/>
 		<simple-sink name="MinimalSink"/>
 		
 		<type name="Element">
