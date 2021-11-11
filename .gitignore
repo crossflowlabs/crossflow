@@ -1,0 +1,17 @@
+**/resources/credentials/
+**/githubprivate\.properties
+
+**/bin/
+**/target/
+
+**/\.idea/
+**/docker/data/
+**/cloned-repos/
+**/okhttp_cache/
+
+**/*\.rar
+
+
+**/activemq-data
+
+*.pyc
