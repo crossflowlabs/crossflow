@@ -15,3 +15,7 @@
 **/activemq-data
 
 *.pyc
+
+**/.project
+**/.classpath
+**/.settings
