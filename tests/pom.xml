@@ -112,11 +112,68 @@
 
 			</plugin>
 
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<configuration>
+							<target name="main">
+
+								<!--
+								 Set up the core Epsilon tasks -->
+
+								<taskdef
+										resource="org/eclipse/epsilon/workflow/tasks/tasks.xml"/>
+
+								<!--  Set up the Epsilon EMF tasks -->
+								<taskdef
+										resource="org/eclipse/epsilon/workflow/tasks/emf/tasks.xml"/>
+
+
+
+								<epsilon.emf.register  file="../core/src/main/java/model/crossflow.ecore" />
+
+								<!-- epsilon.for requires Epsilon 1.6 -->
+								<epsilon.for>
+									<fileset dir="models" excludes="graphviz.egl"></fileset>
+									<epsilon.emf.loadModel name="CrossflowLanguageModel" modelfile="models/${it}"
+														   metamodeluri="org.crossflow" read="true" store="false"/>
+									<epsilon.egl src="../core/src/main/java/java/crossflow.egx" outputroot=".">
+										<model ref="CrossflowLanguageModel"/>
+									</epsilon.egl>
+									<epsilon.egl src="../core/src/main/java/python/crossflow.egx" outputroot=".">
+										<model ref="CrossflowLanguageModel"/>
+									</epsilon.egl>
+									<epsilon.disposeModel model="CrossflowLanguageModel"/>
+								</epsilon.for>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.eclipse.epsilon</groupId>
+						<artifactId>org.eclipse.epsilon.workflow</artifactId>
+						<version>2.3.0</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.epsilon</groupId>
+						<artifactId>org.eclipse.epsilon.workflow.emf</artifactId>
+						<version>2.3.0</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.epsilon</groupId>
+						<artifactId>org.eclipse.epsilon.eunit.cmp.emf</artifactId>
+						<version>2.3.0</version>
+					</dependency>
+				</dependencies>
+			</plugin>
 		</plugins>
 	</build>
-
-
-
-
-
 </project>
