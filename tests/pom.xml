@@ -70,7 +70,7 @@
 						</goals>
 						<configuration>
 							<sources>
-								<source>srg-gen</source>
+								<source>src-gen</source>
 							</sources>
 						</configuration>
 					</execution>
@@ -91,6 +91,7 @@
 							</excludes>
 						</filter>
 					</filters>
+					<finalName>calcS-bare</finalName>
 				</configuration>
 				<executions>
 					<execution>
@@ -111,7 +112,6 @@
 				</executions>
 
 			</plugin>
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>

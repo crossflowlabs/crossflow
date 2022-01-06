@@ -1,23 +1,15 @@
 package org.crossflow.runtime;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import java.io.File;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.UUID;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeoutException;
+import com.beust.jcommander.Parameter;
+import org.apache.activemq.broker.BrokerService;
+import org.apache.activemq.broker.jmx.DestinationViewMBean;
+import org.apache.activemq.command.ActiveMQDestination;
+import org.crossflow.runtime.serialization.Serializer;
+import org.crossflow.runtime.utils.*;
+import org.crossflow.runtime.utils.ControlSignal.ControlSignals;
+import org.crossflow.runtime.utils.TaskStatus.TaskStatuses;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.management.MBeanServerConnection;
 import javax.management.MBeanServerInvocationHandler;
@@ -25,25 +17,15 @@ import javax.management.ObjectName;
 import javax.management.remote.JMXConnector;
 import javax.management.remote.JMXConnectorFactory;
 import javax.management.remote.JMXServiceURL;
+import java.io.File;
+import java.nio.file.Files;
+import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeoutException;
 
-import org.apache.activemq.broker.BrokerService;
-import org.apache.activemq.broker.jmx.DestinationViewMBean;
-import org.apache.activemq.command.ActiveMQDestination;
-import org.crossflow.runtime.serialization.Serializer;
-import org.crossflow.runtime.utils.ControlSignal;
-import org.crossflow.runtime.utils.ControlSignal.ControlSignals;
-import org.crossflow.runtime.utils.CrossflowLogger;
-import org.crossflow.runtime.utils.DefaultLogConsumer;
-import org.crossflow.runtime.utils.LogLevel;
-import org.crossflow.runtime.utils.LogMessage;
-import org.crossflow.runtime.utils.StreamMetadata;
-import org.crossflow.runtime.utils.StreamMetadataSnapshot;
-import org.crossflow.runtime.utils.TaskStatus;
-import org.crossflow.runtime.utils.TaskStatus.TaskStatuses;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.beust.jcommander.Parameter;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 public abstract class Workflow<E extends Enum<E>> {
 	
@@ -94,7 +76,7 @@ public abstract class Workflow<E extends Enum<E>> {
 	protected String activeMqConfig;
 
 	@Parameter(names = { "-createBroker" }, description = "Whether this workflow creates a broker or not.", arity = 1)
-	protected boolean createBroker = true;
+	protected boolean createBroker = false;
 
 	protected BrokerService brokerService;
 

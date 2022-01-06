@@ -1,0 +1,22 @@
+package org.crossflow.tests.wordcount;
+
+import java.io.File;
+
+import org.crossflow.tests.WorkflowTests;
+import org.junit.Test;
+
+public class WordCountWorkflowTests extends WorkflowTests {
+
+	@Test
+	public void testOutput() throws Exception {
+		WordCountWorkflow workflow = new WordCountWorkflow();
+		workflow.createBroker(createBroker);
+		workflow.setInputDirectory(new File("inputs/wordcount"));
+		workflow.setOutputDirectory(new File("outputs/wordcount"));
+		workflow.run();
+
+		waitFor(workflow);
+
+	}
+
+}
