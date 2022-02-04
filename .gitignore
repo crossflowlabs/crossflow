@@ -3,6 +3,8 @@
 
 **/bin/
 **/target/
+**/src-gen/
+**/py-gen/
 
 **/\.idea/
 **/docker/data/
