@@ -19,7 +19,7 @@ public class CalculatorWorkflowApp {
 		master.setInputDirectory(new File("experiment/calculator/in"));
 		master.setOutputDirectory(new File("experiment/calculator/out"));
 		
-		master.setInstanceId("Example CalculatorWorkflow Instance");
+		master.setInstanceId("calculator");
 		master.setName("CalculatorWorkflow");
 
 		master.run();
