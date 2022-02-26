@@ -1,0 +1,136 @@
+import "../util.eol";
+
+rule Workflow2App
+	transform w : CrossflowLanguageModel!Workflow {
+	parameters : w.getParameters("Workflow2App")
+	template : "workflow2app.egl"
+	target : w.getImplPath() + w.name + "App.java"
+	overwrite : false
+}
+
+rule Workflow2TaskEnum
+	transform w : CrossflowLanguageModel!Workflow {
+	parameters : w.getParameters("Workflow2TaskEnum")
+	template : "workflow2taskenum.egl"
+	target : w.getPath() + w.name + "Tasks.java"
+}
+
+rule Config2ConfigSource
+	transform ty : CrossflowLanguageModel!Type {
+	guard : ty.eContainer().isDefined() and ty.eContainer().isTypeOf(CrossflowLanguageModel!Workflow) and ty.eContainer().tasks.collect(c|c.configurations).flatten.asSet().contains(ty)
+	parameters  {
+		var params = ty.createParameters("Config2ConfigSource");
+		params.put("t", ty.createSource());
+		return params;
+	} 
+	template : "task2baseclass.egl"
+	target : ty.getPath() + ty.name + ".java"
+}
+
+rule Workflow2Class 
+	transform w : CrossflowLanguageModel!Workflow {
+	parameters {
+		var params = w.createParameters("Workflow2Class");
+		return params;	
+	}
+	template : "workflow2class.egl"
+	target : w.getPath() + w.name + ".java"
+}
+
+rule Type2Class 
+	transform t : CrossflowLanguageModel!Type {
+	guard : t.eContainer().isDefined() and t.eContainer().isTypeOf(CrossflowLanguageModel!Workflow) and t.impl.isUndefined() //and s.csvFile.isUndefined()
+	parameters : t.createParameters("Type2Class")
+	template : "type2class-new.egl"
+	target : t.getPath() + t.name + ".java"
+}
+
+rule CsvSource2Source
+	transform t : CrossflowLanguageModel!CsvSource {
+	parameters : t.getParameters("CsvSource2Source")
+	template : "csvsource2source.egl"
+	target : t.getImplPath() + t.name + ".java"	
+	overwrite : false
+}
+
+rule CsvSink2Sink
+	transform t : CrossflowLanguageModel!CsvSink {
+	parameters : t.getParameters("CsvSink2Sink")
+	template : "csvsink2sink.egl"
+	target : t.getImplPath() + t.name + ".java"	
+	overwrite : false
+}
+
+@greedy
+rule CommitmentTask2BaseClass 
+	transform t : CrossflowLanguageModel!Task {
+	guard : t.isJavaTask() and t.isTypeOf(CrossflowLanguageModel!CommitmentTask)
+	parameters  {
+		var params = t.createParameters("CommitmentTask2BaseClass");
+		return params;
+	} 
+	template : "commitmenttask2baseclass-new.egl"
+	target : t.getPath() + "Commitment" + t.name + "Base.java"	
+}
+
+@greedy
+rule OpinionatedTask2BaseClass 
+	transform t : CrossflowLanguageModel!Task {
+	guard : t.isJavaTask() and t.isTypeOf(CrossflowLanguageModel!OpinionatedTask)
+	parameters  {
+		var params = t.createParameters("OpinionatedTask2BaseClass");
+		return params;
+	} 
+	template : "opinionatedtask2baseclass.egl"
+	target : t.getPath() + "Opinionated" + t.name + "Base.java"	
+}
+
+@greedy
+rule Task2BaseClass 
+	transform t : CrossflowLanguageModel!Task {
+	guard : t.isJavaTask()
+	parameters : t.createParameters("Task2BaseClass")
+	template : "task2baseclass.egl"
+	target : t.getPath() + t.name + "Base.java"	
+}
+
+@greedy
+rule Task2ImplClass 
+	transform t : CrossflowLanguageModel!Task {
+	guard :	t.isJavaTask() and not t.isTypeOf(CrossflowLanguageModel!ScriptedTask)
+	parameters : t.getParameters("Task2ImplClass")
+	template : "task2implclass.egl"
+	target : t.getImplPath() + t.name + ".java"
+	overwrite : false
+}
+
+@greedy
+rule Steam2Class 
+	transform s : CrossflowLanguageModel!Stream {
+	guard : not s.inputOf.isEmpty()
+	parameters : s.createParameters("Steam2Class")
+	template : "stream2class.egl"
+	target : s.getPath() + s.name + ".java"
+}
+
+@greedy
+rule Steam2Consumer 
+	transform s : CrossflowLanguageModel!Stream {
+	parameters : s.createParameters("Steam2Consumer")
+	template : "stream2consumer.egl"
+	target : s.getPath() + s.name + "Consumer.java"
+}
+
+operation CrossflowLanguageModel!Type findEligibleConfigurableTasks(){
+	return CrossflowLanguageModel!Task.all.select(t|t.configurations.exists(c|c=self));
+}
+
+@cached
+operation Any getParameters(ruleName : String) : Map {
+	return self.getParameters(ruleName, "java");
+}
+
+operation Any createParameters(name : String) : Map {
+	var params = self.getParameters(name);
+	return params;
+}

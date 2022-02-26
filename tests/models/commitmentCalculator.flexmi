@@ -1,0 +1,37 @@
+<?nsuri org.crossflow?>
+<?render-graphviz-dot graphviz.egl?>
+<?import templates.flexmi?>
+<_>
+
+    <!-- Simple example that performs calculations from a CSV -->
+    <workflow name="CommitCalculatorWorkflow">
+        <source name="CalculatorSource" out="Calculations"/>
+        <queue name="Calculations" type="Calculation"/>
+        <commitmenttask name="Calculator" commitAfter="1" in="Calculations" out="CalculationResults"/>
+        <queue name="CalculationResults" type="CalculationResult"/>
+        <sink name="CalculationResultsSink" in="CalculationResults"/>
+
+        <type name="Calculation">
+            <datafield name="a" type="int" isForHash="true"/>
+            <datafield name="b" type="int" isForHash="false"/>
+            <datafield name="operator" type="String"/>
+        </type>
+
+        <type name="CalculationResult" extending="Calculation">
+            <datafield name="worker" type="String"/>
+            <datafield name="result" type="String"/>
+            <enumfield name="workerLang" values="python,java"/>
+        </type>
+
+        <language name="Java" package="org.crossflow.tests.ccalculator" genOutputFolder="src-gen" outputFolder="src"/>
+        <language name="Python" package="commitment-calculator">
+            <parameter name="skipReqsTxt" value="true"/>
+            <parameter name="skipReadme" value="true"/>
+            <parameter name="skipMain" value="true"/>
+        </language>
+
+        <serializer name="json"/>
+
+    </workflow>
+
+</_>

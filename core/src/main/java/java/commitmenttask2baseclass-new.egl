@@ -1,0 +1,94 @@
+[%import "task2baseclass.egl";%]
+package [%=package%];
+
+import java.util.Collections;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
+
+import javax.annotation.Generated;
+
+import org.crossflow.runtime.FailedJob;
+
+import com.google.common.util.concurrent.Futures;
+import com.google.common.util.concurrent.ListenableFuture;
+
+@Generated(value = "org.crossflow.java.[%=genRule%]"[% if (genDate.isDefined()) { %], date = "[%=genDate%]"[%}%])
+public abstract class Commitment[%=t.name%]Base extends [%=t.name%]Base {
+	
+	protected volatile int rejections = 0;
+	protected volatile int occurences = 0;
+	protected Map<String,Integer> seen = new ConcurrentHashMap<>();
+	protected Set<String> commitments = ConcurrentHashMap.newKeySet();	
+	
+	[%for (s in t.input) { %]
+	
+		[%if(s.isConfigurationChannel()){%]
+	boolean hasProcessed[%=s.name%] = false;
+	[%}%]
+	
+[%=s.createStartOfConsumeMethod()%]
+		[%if(not s.isConfigurationChannel() and (not t.multipleOutputs and t.output.size==1)) {%]
+				[%=t.output.first.type.name%] result = null;
+				if (hasCommited([%=s.type.name.ftlc()%])) {
+					occurences++;
+					result = consume[%=s.name%]([%=s.type.name.ftlc()%]);
+				} else if (seen.containsKey([%=s.type.name.ftlc()%].getJobHash()) && seen.get([%=s.type.name.ftlc()%].getJobHash())>=[%=t.commitAfter%]) {
+					commitments.add([%=s.type.name.ftlc()%].getJobHash());
+					result = consume[%=s.name%]([%=s.type.name.ftlc()%]);
+				} else {
+					if(!seen.containsKey([%=s.type.name.ftlc()%].getJobHash()))
+						seen.put([%=s.type.name.ftlc()%].getJobHash(),1);
+					seen.put([%=s.type.name.ftlc()%].getJobHash(),seen.get([%=s.type.name.ftlc()%].getJobHash())+1);
+					rejections++;
+					workflow.get[%=s.name%]().send([%=s.type.name.ftlc()%],this.getClass().getName());
+				}			
+				if(result != null){
+					result.setTransactional(false);
+					sendTo[%=t.output.first.name%](result);
+				}
+		[%}else if(not s.isConfigurationChannel()){%]
+				if (commitments.contains([%=s.type.name.ftlc()%].getJobHash())) {
+					occurences++;
+					consume[%=s.name%]([%=s.type.name.ftlc()%]);
+				} else if (seen.containsKey([%=s.type.name.ftlc()%].getJobHash()) && seen.get([%=s.type.name.ftlc()%].getJobHash())>=[%=t.commitAfter%]) {
+					commitments.add([%=s.type.name.ftlc()%].getJobHash());
+					consume[%=s.name%]([%=s.type.name.ftlc()%]);
+				} else {
+					if(!seen.containsKey([%=s.type.name.ftlc()%].getJobHash()))
+						seen.put([%=s.type.name.ftlc()%].getJobHash(),1);
+					seen.put([%=s.type.name.ftlc()%].getJobHash(),seen.get([%=s.type.name.ftlc()%].getJobHash())+1);
+					rejections++;
+					workflow.get[%=s.name%]().send([%=s.type.name.ftlc()%],this.getClass().getName());
+				}				
+[%if(not s.isConfigurationChannel()){%][%=s.sendConfirmationMessage()%]
+		[%}}else{%]
+				consume[%=s.name%]([%=s.type.name.ftlc()%]);
+[%}%]
+[%=s.createEndOfConsumeMethod()%]
+	[%}%]
+
+	public int getRejections() {
+		return rejections;
+	}
+
+	public int getOccurences() {
+		return occurences;
+	}
+	
+	public int getCommitmentSize() {
+		return commitments.size();
+	}
+
+[%for (s in t.input) { %]
+	/*
+	 * Return whether this instance of Commitment[%=t.name%] is commited to the job 'input' for processing.
+	 */
+	 public boolean hasCommited([%=s.type.name%] [%=s.type.name.ftlc()%]){
+        return commitments.contains([%=s.type.name.ftlc()%].getJobHash());
+     }
+
+[%}%]
+
+}

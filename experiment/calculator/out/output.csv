@@ -1,0 +1,6 @@
+a,operator,b,result,worker,hash
+5,+,3,8,Worker1,e29fbb41-419e-31a2-8fe8-09fc72de45af
+5,^,3,125.0,Worker8,9079ac7b-c928-37bc-9122-ba2c955b92c2
+3,*,2,6,Worker8,b616c4e3-7267-370a-8a50-abc7dace2b5d
+9,+,4,13,Worker1,e53e8b7d-5b84-3fae-9b7c-dd479f8f04f2
+3,-,2,1,Worker1,70dba8f7-d28f-3d41-90f7-fac616cd9b4d

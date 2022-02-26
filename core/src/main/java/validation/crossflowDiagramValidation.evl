@@ -1,0 +1,36 @@
+context Workflow {
+	constraint HasName{
+		check : self.name.isDefined() and self.name.trim.length>0
+		message : "Workflow name needs to be set"
+	}	 
+}
+
+context Task {
+	constraint HasName{
+		check : self.name.isDefined() and self.name.trim.length>0
+		message : "Task name needs to be set for: "+self
+	}	 
+}
+
+context Stream {
+	constraint HasName{
+		check : self.name.isDefined() and self.name.trim.length>0
+		message : "Stream name needs to be set for: "+self
+	}	
+	
+	constraint HasType{
+		check : self.type.isDefined()
+		message : "Stream needs to have a type set: "+self
+	}	 
+}
+
+context Type {
+	constraint HasName{
+		check : self.name.isDefined() and self.name.trim.length>0
+		message : "Type name needs to be set for: "+self
+	}	 
+}
+
+operation Type isCompatibleWith(type : Type){
+	return self==type or self.closure(t|t.extending).contains(type);
+}
