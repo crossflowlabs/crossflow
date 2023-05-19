@@ -1,0 +1,44 @@
+<?nsuri org.crossflow?>
+<?render-graphviz-dot graphviz.egl?>
+<?import templates.flexmi?>
+<_>
+
+	<!-- Simple example that performs distributed merge sort -->
+	<workflow name="TerasortWorkflow">
+	<source name="FilePartitionerSource" out="FilesForSort" />
+	<queue name="FilesForSort" type="UnsortedFilePath"/>
+	<commitmenttask name="Sorter" in="FilesForSort" out="SortedFilePaths"/>
+	<queue name="SortedFilePaths" type="SortedFilePath"/>
+	<task name="SortedFilesDispatcher" masterOnly="true" in="SortedFilePaths" out="FilesForMerge, TerasortResults"/>
+	<queue name="FilesForMerge" type="SortedFilePair"/>
+	<commitmenttask name="Merger" in="FilesForMerge" out="SortedFilePaths"/>
+	<queue name="TerasortResults" type="TerasortResult"/>
+	<sink name="TerasortSink" in="TerasortResults"/>
+
+	<type name="UnsortedFilePath">
+    	<datafield name="fileName" type="String"/>
+    	<datafield name="lineCount" type="int"/>
+    	<datafield name="resultFileName" type="String" isForHash="true"/>
+    </type>
+
+    <type name="SortedFilePath" extending="UnsortedFilePath">
+        <datafield name="sortOrder" type="int" value="1"/>
+    </type>
+
+    <type name="SortedFilePair">
+        <datafield name="firstSortedFile" type="SortedFilePath"/>
+        <datafield name="secondSortedFile" type="SortedFilePath"/>
+        <datafield name="fileHash" type="String" isForHash="true"/>
+    </type>
+
+    <type name="TerasortResult">
+        <datafield name="sortedOutputFile" type="SortedFilePath"/>
+    </type>
+
+    <language name="Java" package="org.crossflow.tests.terasort" genOutputFolder="src-gen" outputFolder="src"/>
+
+
+
+	</workflow>
+
+</_>

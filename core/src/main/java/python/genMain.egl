@@ -1,0 +1,15 @@
+[%import "../util.eol";%]
+import time
+
+from crossflow.[%=package%].[%=w.name.toSnakeCaseLower()%] import [%=w.name%]
+from crossflow.runtime import LogLevel, WorkflowConfig
+
+
+if __name__ == '__main__':
+    config = WorkflowConfig()
+    app = [%=w.name%].from_config(config)
+    app.run()
+    app.logger.log(LogLevel.INFO, "Finished Startup")
+    while (not app.terminated):
+        time.sleep(0.1)
+    print("terminated")

@@ -1,0 +1,27 @@
+<?nsuri org.crossflow?>
+<?render-graphviz-dot graphviz.egl?>
+<?import templates.flexmi?>
+<_>
+
+	<workflow name="SumSquare">
+		<source name="SumSquareSource" out="Numbers"/>
+	    <queue name="Numbers" type="Number"/>
+		<task name="SquareCalculator" in="Numbers" out="Squares"/>
+	    <queue name="Squares" type="Square"/>
+		<sink name="SumSquareSink" in="Squares"/>
+
+		<type name="Number">
+			<datafield name="a" type="int" isForHash="true"/>
+		</type>
+
+		<type name="Square" extending="Number">
+			<datafield name="square" type="int"/>
+		</type>
+
+		<language name="Java" package="org.crossflow.tests.sumsquares" genOutputFolder="src-gen" outputFolder="src"/>
+
+		<serializer name="xml"/>
+
+	</workflow>
+
+</_>

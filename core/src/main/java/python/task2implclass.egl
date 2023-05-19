@@ -1,0 +1,51 @@
+[%import "../util.eol";
+import "pythonUtil.eol";
+
+if (t.isSource()){%]
+import threading
+
+[%}%]
+from crossflow.[%=package%].[%=t.name.toSnakeCaseLower()%] import [%if (t.isTypeOf(CrossflowLanguageModel!OpinionatedTask)){%]Opinionated[%}%][%=t.name%]Base
+
+[% for (i in t.input.collect(s|s.type)) {%]
+from crossflow.[%=package%].[%=i.name.toSnakeCaseLower()%] import [%=i.name%]
+[%}%]
+[% for (i in t.output.collect(s|s.type)) { %]
+from crossflow.[%=package%].[%=i.name.toSnakeCaseLower()%] import [%=i.name%]
+[%}%]
+
+
+class [%=t.name%]([%if (t.isTypeOf(CrossflowLanguageModel!OpinionatedTask)){%]Opinionated[%}%][%=t.name%]Base):
+
+    def __init__(self):
+        super().__init__()
+        
+    [%for (s in t.input) {%]
+    def consume_[%=s.name.toSnakeCaseLower()%](self, input_job: [%=s.type.name%]):
+        print(f"{self.workflow.name}:[%=t.name%]:consume_[%=s.name.toSnakeCaseLower()%] received {input_job}")
+    
+        # TODO: Add impementation here
+        # Send output jobs
+        
+        [%for (o in t.output) {%]
+        [%=o.type.name.toSnakeCase()%]_output = [%=o.type.name%]()
+            [%if (t.isSingleOut()) {%]
+        return [%=o.type.name.toSnakeCase()%]_output
+            [%} else {%]
+        # uncomment to send
+        # self.send_to_[%=o.name.toSnakeCaseLower()%]([%=o.type.name.toSnakeCase()%]_output)
+            [%}
+        }%]
+    
+    def on_consume_[%=s.name.toSnakeCaseLower()%]_timeout(self, input_job: [%=s.type.name%]):
+        super().on_consume_[%=s.name.toSnakeCaseLower()%]_timeout(input_job)
+        
+    def on_consume_[%=s.name.toSnakeCaseLower()%]_cancelled(self, input_job: [%=s.type.name%]):
+        super().on_consume_[%=s.name.toSnakeCaseLower()%]_cancelled(input_job)
+        
+    [%
+        if (t.isTypeOf(CrossflowLanguageModel!OpinionatedTask)) {%]
+    def accept_input_[%=s.type.name.toSnakeCaseLower()%](self, input_job: [%=s.type.name%]):
+        pass
+        [%}
+    }%]
