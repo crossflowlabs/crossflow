@@ -1,0 +1,36 @@
+<?nsuri org.crossflow?>
+<?render-graphviz-neato ../org.crossflow.tests/models/graphviz.egl?>
+<_>
+
+	<workflow name="TechrankWorkflow">
+		<source name="TechnologySource" out="Technologies"/>
+		<queue name="Technologies" type="Technology"/>
+		<task name="GitHubCodeSearcher" in="Technologies" out="Repositories"/>
+		<queue name="Repositories" type="Repository"/>
+		<commitmenttask name="RepositorySearcher" in="Repositories" out="RepositorySearchResults"/>
+		<queue name="RepositorySearchResults" type="RepositorySearchResult"/>
+		<sink name="ResultsSink" in="RepositorySearchResults"/>
+		
+		<type name="Technology">
+			<datafield name="name"/>
+			<datafield name="keyword"/>
+			<datafield name="extension"/>
+		</type>
+		
+		<type name="Repository">
+			<datafield name="path"/>
+			<datafield name="size" type="long"/>
+			<datafield name="technologies" type="Technology" many="true"/>
+
+		</type>
+
+		<type name="RepositorySearchResult">
+			<datafield name="technology"/>
+			<datafield name="results" type="int"/>
+			<datafield name="repository" type="String"/>
+		</type>
+		
+	<language name="Java" package="org.crossflow.tests.techrank" genOutputFolder="src-gen" outputFolder="src"/>
+	</workflow>	
+
+</_>

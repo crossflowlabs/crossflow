@@ -1,0 +1,30 @@
+<?nsuri org.crossflow?>
+<?render-graphviz-dot graphviz.egl?>
+<_>
+
+	<!-- Example where participants can choose which word to count instances of -->
+	<workflow name="OpinionatedWorkflow">
+		<source name="WordSource" out="Words"/>
+		
+		<queue name="Words" type="Word"/>
+		
+		<opinionatedtask name="OccurencesMonitor" in="Words" out="Occ">
+			<param name="favouriteWord" type="String"/>
+		</opinionatedtask>
+		
+		<queue name="Occ" type="Occs"/>
+		
+		<sink name="Sink" in="Occ"/>
+			
+		<type name="Word">
+			<datafield name="w" type="String"/>
+		</type>
+
+		<type name="Occs">
+			<datafield name="i" type="Integer"/>
+		</type>
+				
+	<language name="Java" package="org.crossflow.tests.opinionated" genOutputFolder="src-gen" outputFolder="src"/>
+	</workflow>
+	
+</_>
